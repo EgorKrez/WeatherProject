@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/componentsStyles.css"
 import '../styles/item.css'
 
-const Modal = ({ active, setActive, time, cityName, temp, weather, feelsLike, speed, deg}) => {
+const Modal = ({active, setActive, time, cityName, temp, weather, feelsLike, speed, deg}) => {
     return (
         <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
             <div className={(weather === "Clear") ? "item sunny" : (weather === "Clouds") ? "item cloud" : (weather === "Rain") ? "item rain" : "item"}  onClick={() => setActive(true)}>

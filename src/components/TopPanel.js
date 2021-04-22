@@ -2,17 +2,16 @@ import React from "react";
 import axios from "axios";
 import { showFor3DaysAction, showForNowAction, clearAllForecastAction } from "../redux/actions";
 import {useDispatch} from "react-redux";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const TopPanel = () => {
     const dispatch = useDispatch(null)
 
     const getWeatherForNowObject = (data) => {
-        console.log(data)
          return  {cityName: data.name, citySys: data.sys, cityMain: data.main, cityWind: data.wind, time: new Date().toISOString().slice(0, 20), weather: data.weather[0].main}
     }
 
     const getWeatherFor3DaysObject = (result) => {
-        console.log(result)
         return result.list.map((data) => ({cityName: result.city.name, citySys: data.sys, cityMain: data.main, cityWind: data.wind, time: data.dt_txt, weather: data.weather[0].main}))
     }
 
@@ -40,9 +39,9 @@ const TopPanel = () => {
 
     return (
         <div className="top-panel">
-            <button onClick={fetchWeatherForNow}>Now</button>
-            <button onClick={fetchWeatherFor3Days}>3 Days</button>
-            <button onClick={clearAllWeather}>Clear</button>
+            <button className="btn btn-primary btn-lg" onClick={fetchWeatherForNow}>Now</button>
+            <button className="btn btn-primary btn-lg" onClick={fetchWeatherFor3Days}>3 Days</button>
+            <button className="btn btn-primary btn-lg" onClick={clearAllWeather}>Clear</button>
         </div>
     );
 }
