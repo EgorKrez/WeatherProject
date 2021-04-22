@@ -1,16 +1,17 @@
 import React from "react";
 import axios from "axios";
+import { showFor3DaysAction, showForNowAction } from "../redux/actions";
+import {useDispatch} from "react-redux";
 
 const TopPanel = () => {
+    const dispatch = useDispatch(null)
 
     const getWeatherForNowObject = (data) => {
-        console.log({cityName: data.name, citySys: data.sys, cityMain: data.main, cityWind: data.wind})
+         return  {cityName: data.name, citySys: data.sys, cityMain: data.main, cityWind: data.wind}
     }
 
     const getWeatherFor3DaysObject = (result) => {
-        console.log(result.city.name)
-        console.log(result.list)
-        result.list.map((data) => console.log({cityName: result.city.name, citySys: data.sys, cityMain: data.main, cityWind: data.wind, time: data.dt_txt}))
+        result.list.map((data) => ({cityName: result.city.name, citySys: data.sys, cityMain: data.main, cityWind: data.wind, time: data.dt_txt}))
     }
 
     const fetchWeatherForNow = () => {
@@ -18,6 +19,7 @@ const TopPanel = () => {
             .get(`https://api.openweathermap.org/data/2.5/weather?q=London,uk,DE&appid=6546d6953b78180b0268e32337fadb90`)
             .then((result) => {
                 getWeatherForNowObject(result.data)
+                dispatch(showFor3DaysAction(getWeatherForNowObject(result.data)))
             });
     }
 
@@ -26,6 +28,7 @@ const TopPanel = () => {
             .get(`https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=6546d6953b78180b0268e32337fadb90`)
             .then((result) => {
                 getWeatherFor3DaysObject(result.data)
+                dispatch(showForNowAction({title: 'say', id: Date.now().toString()}))
             });
     }
 

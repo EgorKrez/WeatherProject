@@ -13,8 +13,7 @@ function App() {
         <Title />
         <div className="content">
         <TopPanel />
-      <List />
-      <Item />
+      {/*<List />*/}
         </div>
       <Modal />
     </div>

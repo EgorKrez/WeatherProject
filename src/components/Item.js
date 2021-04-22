@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import Modal from "./Modal";
 
-const Item = () => {
+const Item = ({ item }) => {
     const [active, setActive] = useState(false)
     return (
         <div>
         <div className="item" onClick={() => setActive(true)}>
-            Item
+            {item}
         </div>
 
         <Modal active={active} setActive={setActive}/>
