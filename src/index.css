@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url("https://www.survivingwithandroid.com/wp-content/uploads/2014/11/android_weather_app.jpg");
 }
 
 code {

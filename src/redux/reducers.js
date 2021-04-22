@@ -1,11 +1,13 @@
-export const showWeatherForNowReducer = (state, payload) => {
-    console.log('egor say 1')
+export const showWeatherForNowReducer = (payload) => {
     console.log(payload)
-    return { ...state, posts: state.posts.concat([payload]) };
+    return { posts: [payload] };
 };
 
 export const showWeatherFor3DaysReducer = (payload) => {
-    console.log('say egor 3')
     console.log(payload)
+    return { posts: [payload] };
+};
+
+export const clearAllForecastReducer = () => {
     return { posts: [] };
 };

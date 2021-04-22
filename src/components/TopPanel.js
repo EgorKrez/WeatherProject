@@ -1,17 +1,19 @@
 import React from "react";
 import axios from "axios";
-import { showFor3DaysAction, showForNowAction } from "../redux/actions";
+import { showFor3DaysAction, showForNowAction, clearAllForecastAction } from "../redux/actions";
 import {useDispatch} from "react-redux";
 
 const TopPanel = () => {
     const dispatch = useDispatch(null)
 
     const getWeatherForNowObject = (data) => {
-         return  {cityName: data.name, citySys: data.sys, cityMain: data.main, cityWind: data.wind}
+        console.log(data)
+         return  {cityName: data.name, citySys: data.sys, cityMain: data.main, cityWind: data.wind, time: new Date().toISOString().slice(0, 20), weather: data.weather[0].main}
     }
 
     const getWeatherFor3DaysObject = (result) => {
-        result.list.map((data) => ({cityName: result.city.name, citySys: data.sys, cityMain: data.main, cityWind: data.wind, time: data.dt_txt}))
+        console.log(result)
+        return result.list.map((data) => ({cityName: result.city.name, citySys: data.sys, cityMain: data.main, cityWind: data.wind, time: data.dt_txt, weather: data.weather[0].main}))
     }
 
     const fetchWeatherForNow = () => {
@@ -19,7 +21,7 @@ const TopPanel = () => {
             .get(`https://api.openweathermap.org/data/2.5/weather?q=London,uk,DE&appid=6546d6953b78180b0268e32337fadb90`)
             .then((result) => {
                 getWeatherForNowObject(result.data)
-                dispatch(showFor3DaysAction(getWeatherForNowObject(result.data)))
+                dispatch(showForNowAction(getWeatherForNowObject(result.data)))
             });
     }
 
@@ -27,15 +29,20 @@ const TopPanel = () => {
         axios
             .get(`https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=6546d6953b78180b0268e32337fadb90`)
             .then((result) => {
-                getWeatherFor3DaysObject(result.data)
-                dispatch(showForNowAction({title: 'say', id: Date.now().toString()}))
+
+                dispatch(showFor3DaysAction(getWeatherFor3DaysObject(result.data)))
             });
+    }
+
+    const clearAllWeather = () => {
+        dispatch(clearAllForecastAction())
     }
 
     return (
         <div className="top-panel">
             <button onClick={fetchWeatherForNow}>Now</button>
             <button onClick={fetchWeatherFor3Days}>3 Days</button>
+            <button onClick={clearAllWeather}>Clear</button>
         </div>
     );
 }

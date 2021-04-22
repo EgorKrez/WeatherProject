@@ -4,15 +4,27 @@ import {useSelector} from "react-redux";
 import {postsSelector} from "../redux/selectors";
 
 const List = () => {
-    const [key, setKey] = useState(0)
     const items = useSelector(postsSelector)
-    setKey(prev => prev + 1)
+    const [key, setKey] = useState(0)
 
+    const getKey = () => {
+        setKey(key + 1)
+        return key
+    }
+
+    if (items[0].length) {
+        return (
+            <div>
+                {items[0].map((item) => <Item item={item} key={item.time}/>)}
+            </div>
+        );
+    }
     return (
         <div>
-            {/*{items.map((item) => <Item item={item} key={key}/>)}*/}
+            {items.map((item) => <Item item={item} key={getKey}/>)}
         </div>
     );
+
 }
 
 export default List

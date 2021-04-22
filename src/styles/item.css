@@ -1,0 +1,61 @@
+
+.item {
+    height: 300px;
+    width: 500px;
+    background-color: lightgray;
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+.item-time {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item-city {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item-temp {
+    height: 25%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-size: 35px;
+    color: white;
+}
+.item-feel-like {
+    height: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 100;
+    font-size: 10px;
+    color: white;
+}
+.item-wind {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: 15px;
+    color: white;
+}
+.sunny {
+    background: url("https://lh3.googleusercontent.com/proxy/77iUBGRR54pldMpf175UFvgRnSCdSJaBM-TsHqINNDtzEi4mbs10eU_cY4NENL199aV-uXa2o-Llj9Hf69Zyn588sjabkAeXNMXu6ANldD0");
+}
+.rain {
+    background: url("https://zviazda.by/sites/default/files/pogoda-na-10-avgusta-zharu-smenit-dozhd_rect_0ac4340d4adb3614fc34409cd804c8fa1.jpg");
+}
+.cloud {
+    background: url("https://riabir.ru/wp-content/uploads/2020/05/whatsapp-image-2020-05-02-at-11.50.38-1-624x468.jpeg");
+}
