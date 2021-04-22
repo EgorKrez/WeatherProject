@@ -50,3 +50,9 @@
     height: 200px;
     width: 400px;
 }
+
+.no-forecast {
+    color: white;
+    font-weight: 700;
+    font-size: 25px;
+}

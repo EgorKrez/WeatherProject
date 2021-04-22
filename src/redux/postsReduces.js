@@ -7,7 +7,7 @@ import {
 import { handleActions } from "redux-actions";
 
 export const initialState = {
-    posts: [],
+    posts: [{}],
     fetchedPosts: [],
 };
 

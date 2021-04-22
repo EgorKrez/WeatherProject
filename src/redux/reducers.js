@@ -7,5 +7,5 @@ export const showWeatherFor3DaysReducer = (payload) => {
 };
 
 export const clearAllForecastReducer = () => {
-    return { posts: [] };
+    return { posts: [{}] };
 };
