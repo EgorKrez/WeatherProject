@@ -15,7 +15,7 @@ const Item = ({ item }) => {
             <div className="item-feel-like">Feels like: {item.cityMain.feels_like}</div>
             <div className="item-wind">Speed: {item.cityWind.speed}; Deg: {item.cityWind.deg};</div>
         </div>
-            
+
         <Modal active={active} setActive={setActive} time={item.time} cityName={item.cityName} temp={item.cityMain.temp} weather={item.weather} feelsLike={item.cityMain.feels_like} speed={item.cityWind.speed} deg={item.cityWind.deg}/>
 
         </div>
