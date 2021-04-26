@@ -80,7 +80,7 @@ const Modal = ({
             </div>
           </div>
         ) : (
-          <div></div>
+          void 0
         )}
       </div>
     </div>
