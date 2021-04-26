@@ -4,6 +4,7 @@
   background-color: lightgray;
   margin-bottom: 50px;
   border-radius: 5px;
+  padding-top: 30px;
 }
 
 .item:hover {
