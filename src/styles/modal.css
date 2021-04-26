@@ -46,8 +46,10 @@
   font-weight: 500;
   font-size: 14px;
   opacity: 0.8;
+  transition: 0.4s;
 }
 
 .modal-menu-item:hover {
   cursor: pointer;
+  opacity: 1;
 }
