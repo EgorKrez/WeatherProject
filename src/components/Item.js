@@ -5,20 +5,19 @@ import "../styles/item.css";
 const Item = ({ item, forecast }) => {
   const [active, setActive] = useState(false);
 
+  const getClass = (weather) => {
+    return weather === "Clear"
+      ? "item sunny"
+      : weather === "Clouds"
+      ? "item cloud"
+      : weather === "Rain"
+      ? "item rain"
+      : "item";
+  };
+
   return (
     <div>
-      <div
-        className={
-          item.weather === "Clear"
-            ? "item sunny"
-            : item.weather === "Clouds"
-            ? "item cloud"
-            : item.weather === "Rain"
-            ? "item rain"
-            : item
-        }
-        onClick={() => setActive(true)}
-      >
+      <div className={getClass(item.weather)} onClick={() => setActive(true)}>
         <div className="item-time">{item.time}</div>
         <div className="item-city">{item.cityName}</div>
         <div className="item-temp">{item.cityMain.temp}</div>
