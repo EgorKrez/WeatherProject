@@ -22,3 +22,32 @@
   height: 200px;
   width: 400px;
 }
+
+.modal-item {
+  height: 400px;
+  width: 600px;
+  border-radius: 5px;
+}
+
+.modal-menu {
+  height: 15%;
+  width: 100%;
+  background-color: white;
+  margin-top: 60px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.modal-menu-item {
+  height: 100%;
+  width: 12.5%;
+  float: left;
+  border-right: 1px solid white;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.modal-menu-item:hover {
+  cursor: pointer;
+}

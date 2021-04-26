@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 import "../styles/item.css";
 
-const Item = ({ item }) => {
+const Item = ({ item, forecast }) => {
   const [active, setActive] = useState(false);
 
   return (
@@ -41,6 +41,8 @@ const Item = ({ item }) => {
         feelsLike={item.cityMain.feels_like}
         speed={item.cityWind.speed}
         deg={item.cityWind.deg}
+        currentItem={item}
+        forecast={forecast}
       />
     </div>
   );
