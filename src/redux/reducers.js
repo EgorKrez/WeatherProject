@@ -1,11 +1,11 @@
 export const showWeatherForNowReducer = (payload) => {
-  return { posts: [payload] };
+  return { forecasts: [payload] };
 };
 
 export const showWeatherFor3DaysReducer = (payload) => {
-  return { posts: [payload] };
+  return { forecasts: [payload] };
 };
 
 export const clearAllForecastReducer = () => {
-  return { posts: [{}] };
+  return { forecasts: [{}] };
 };

@@ -1,11 +1,11 @@
 import React from "react";
 import Item from "./Item";
 import { useSelector } from "react-redux";
-import { postsSelector } from "../redux/selectors";
+import { forecastSelector } from "../redux/selectors";
 import "../styles/components.css";
 
 const List = () => {
-  const items = useSelector(postsSelector);
+  const items = useSelector(forecastSelector);
 
   const emptyItems = () => {
     return <div className="no-forecast">PLEASE CHOOSE FORECAST</div>;

@@ -54,8 +54,8 @@ const Modal = ({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="item-time">{curTime}</div>
-        <div className="item-time">{curCityName}</div>
-        <div className="item-city">{curTemp}</div>
+        <div className="item-city">{curCityName}</div>
+        <div className="item-temp">{curTemp}</div>
         <div className="item-temp">{curWeather}</div>
         <div className="item-feel-like">Feels like: {curFeelsLike}</div>
         <div className="item-wind">

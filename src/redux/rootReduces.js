@@ -1,17 +1,17 @@
 import { combineReducers } from "redux";
-import { postsReducer } from "./postsReduces";
-import { persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import { forecastReducer } from "./forecastsReduces";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
-    key: 'root',
-    storage,
-}
+  key: "root",
+  storage,
+};
 
 const rootReducer = combineReducers({
-    posts: postsReducer,
-})
+  forecasts: forecastReducer,
+});
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export default persistedReducer
+export default persistedReducer;

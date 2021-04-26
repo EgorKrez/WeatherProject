@@ -7,11 +7,10 @@ import {
 import { handleActions } from "redux-actions";
 
 export const initialState = {
-  posts: [{}],
-  fetchedPosts: [],
+  forecasts: [{}],
 };
 
-export const postsReducer = handleActions(
+export const forecastReducer = handleActions(
   {
     [actions.showForNowAction]: (state = initialState, action) => {
       return showWeatherForNowReducer(action.payload);
