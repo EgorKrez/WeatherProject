@@ -24,7 +24,7 @@ const List = () => {
             const currentForecast = forecast;
             forecast = [];
             return (
-              <Item item={item} key={item.time} forecast={currentForecast} />
+              <Item item={item} forecast={currentForecast} key={item.time} />
             );
           }
           return null;
