@@ -16,7 +16,7 @@ const Modal = ({
 }) => {
   return (
     <div
-      className={active ? "modal active" : "modal"}
+      className={active ? "modal-window active" : "modal-window"}
       onClick={() => setActive(false)}
     >
       <div
