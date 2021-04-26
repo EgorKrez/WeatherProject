@@ -2,35 +2,20 @@ import React from "react";
 import Item from "./Item";
 import { useSelector } from "react-redux";
 import { postsSelector } from "../redux/selectors";
+import "../styles/components.css";
 
 const List = () => {
   const items = useSelector(postsSelector);
 
-  /* let render = null;
-
-  if (JSON.stringify(items[0] == "{}")) {
-    console.log("no");
-    console.log(items);
+  const emptyItems = () => {
     return <div className="no-forecast">PLEASE CHOOSE FORECAST</div>;
-  }
+  };
 
-  if (items[0].length) {
-    render = items[0].map((item) => <Item item={item} key={item.time} />);
-    console.log(render);
-  } else {
-    render = items.map((item) => <Item item={item} key={item.time} />);
-    console.log(render);
-  }
+  const treeDaysForecast = () => {
+    let forecast = [];
 
-  return render; */
-  let forecast = [];
-
-  if (JSON.stringify(items[0]) === "{}") {
-    return <div className="no-forecast">PLEASE CHOOSE FORECAST</div>;
-  }
-  if (items[0].length) {
     return (
-      <div>
+      <div className="list">
         {items[0].map((item, i) => {
           if (i % 8 !== 7) {
             forecast.push(item);
@@ -42,15 +27,29 @@ const List = () => {
               <Item item={item} key={item.time} forecast={currentForecast} />
             );
           }
+          return null;
         })}
       </div>
     );
-  }
+  };
+
+  const currentWeather = () => {
+    return (
+      <div className="list">
+        {items.map((item) => (
+          <Item item={item} forecast={null} key={item.time} />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div>
-      {items.map((item) => (
-        <Item item={item} forecast={null} key={item.time} />
-      ))}
+      {JSON.stringify(items[0]) === "{}"
+        ? emptyItems()
+        : items[0].length
+        ? treeDaysForecast()
+        : currentWeather()}
     </div>
   );
 };

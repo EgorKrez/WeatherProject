@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/components.css";
 import "../styles/item.css";
 import "../styles/modal.css";
@@ -16,14 +16,22 @@ const Modal = ({
   currentItem,
   forecast,
 }) => {
+  const [curTime, setCurTime] = useState(time);
+  const [curCityName, setCurCityName] = useState(cityName);
+  const [curTemp, setCurTemp] = useState(temp);
+  const [curWeather, setCurWeather] = useState(weather);
+  const [curFeelsLike, setCurFeelsLike] = useState(feelsLike);
+  const [curSpeed, setCurSpeed] = useState(speed);
+  const [curDeg, setCurDeg] = useState(deg);
+
   const showForecast = (forecast) => {
-    time = forecast.time;
-    cityName = forecast.cityName;
-    temp = forecast.cityMain.temp;
-    weather = forecast.weather;
-    feelsLike = forecast.cityMain.feels_like;
-    speed = forecast.cityWind.speed;
-    deg = forecast.cityWind.deg;
+    setCurTime(forecast.time);
+    setCurCityName(forecast.cityName);
+    setCurTemp(forecast.cityMain.temp);
+    setCurWeather(forecast.weather);
+    setCurFeelsLike(forecast.cityMain.feels_like);
+    setCurSpeed(forecast.cityWind.speed);
+    setCurDeg(forecast.cityWind.deg);
   };
 
   const getClass = (weather, itemClass) => {
@@ -42,16 +50,16 @@ const Modal = ({
       onClick={() => setActive(false)}
     >
       <div
-        className={getClass(weather, "modal-item")}
+        className={getClass(curWeather, "modal-item")}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="item-time">{time}</div>
-        <div className="item-time">{cityName}</div>
-        <div className="item-city">{temp}</div>
-        <div className="item-temp">{weather}</div>
-        <div className="item-feel-like">Feels like: {feelsLike}</div>
+        <div className="item-time">{curTime}</div>
+        <div className="item-time">{curCityName}</div>
+        <div className="item-city">{curTemp}</div>
+        <div className="item-temp">{curWeather}</div>
+        <div className="item-feel-like">Feels like: {curFeelsLike}</div>
         <div className="item-wind">
-          Speed: {speed}; Deg: {deg};
+          Speed: {curSpeed}; Deg: {curDeg};
         </div>
         {forecast ? (
           <div className="modal-menu">

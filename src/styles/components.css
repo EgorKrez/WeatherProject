@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 50px;
+  text-shadow: 2px 2px 3px black, 0 0 4em black;
 }
 .content {
   display: flex;
@@ -30,4 +31,11 @@
   color: white;
   font-weight: 700;
   font-size: 25px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
 }
