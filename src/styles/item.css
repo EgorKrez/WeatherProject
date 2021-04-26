@@ -7,10 +7,12 @@
   padding-top: 30px;
   text-shadow: 2px 2px 3px black, 0 0 4em black;
   color: white;
+  transition: 0.4s;
 }
 
 .item:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .item-time {
