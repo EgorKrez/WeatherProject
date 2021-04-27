@@ -1,23 +1,20 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 import "../styles/item.css";
+import classNames from "classnames";
 
 const Item = ({ item, forecast }) => {
   const [active, setActive] = useState(false);
 
-  const getClass = (weather) => {
-    return weather === "Clear"
-      ? "item sunny"
-      : weather === "Clouds"
-      ? "item cloud"
-      : weather === "Rain"
-      ? "item rain"
-      : "item";
-  };
+  const itemClass = classNames("item", {
+    sunny: item.weather === "Clear",
+    cloud: item.weather === "Clouds",
+    rain: item.weather === "Rain",
+  });
 
   return (
     <div>
-      <div className={getClass(item.weather)} onClick={() => setActive(true)}>
+      <div className={itemClass} onClick={() => setActive(true)}>
         <div className="item-time">{item.time}</div>
         <div className="item-city">{item.cityName}</div>
         <div className="item-temp">{item.cityMain.temp}</div>

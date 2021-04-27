@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import axios from "axios";
 import {
   showFor3DaysAction,
@@ -33,7 +33,7 @@ const TopPanel = () => {
     }));
   };
 
-  const fetchWeatherForNow = () => {
+  const fetchWeatherForNow = useCallback(() => {
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=London,uk,DE&appid=6546d6953b78180b0268e32337fadb90`
@@ -42,9 +42,9 @@ const TopPanel = () => {
         getWeatherForNowObject(result.data);
         dispatch(showForNowAction(getWeatherForNowObject(result.data)));
       });
-  };
+  }, [dispatch]);
 
-  const fetchWeatherFor3Days = () => {
+  const fetchWeatherFor3Days = useCallback(() => {
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=6546d6953b78180b0268e32337fadb90`
@@ -52,11 +52,11 @@ const TopPanel = () => {
       .then((result) => {
         dispatch(showFor3DaysAction(getWeatherFor3DaysObject(result.data)));
       });
-  };
+  }, [dispatch]);
 
-  const clearAllWeather = () => {
+  const clearAllWeather = useCallback(() => {
     dispatch(clearAllForecastAction());
-  };
+  }, [dispatch]);
 
   return (
     <div className="top-panel">
