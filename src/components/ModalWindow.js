@@ -1,24 +1,14 @@
-import classNames from "classnames";
-import React, { useCallback, useState } from "react";
+import React from "react";
 
-import "../styles/components.css";
-import "../styles/item.css";
-import "../styles/modal.css";
-
-const ModalWindow = ({ active, setActive, firstForecast, forecast }) => {
-  const [curForecast, setCurForecast] = useState(firstForecast);
-
-  const showForecast = useCallback((forecast) => {
-    setCurForecast(forecast);
-  }, []);
-
-  const modalClass = (weather, itemcClass) =>
-    classNames(itemcClass, {
-      sunny: weather === "Clear",
-      cloud: weather === "Clouds",
-      rain: weather === "Rain",
-    });
-
+const ModalWindow = ({
+  active,
+  setActive,
+  firstForecast,
+  forecast,
+  curForecast,
+  showForecast,
+  modalClass,
+}) => {
   return (
     <div
       className={active ? "modal-window active" : "modal-window"}

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Modal from "./Modal";
 import "../styles/item.css";
 import classNames from "classnames";
 import ModalContainer from "../containers/ModalContainer";
@@ -28,12 +27,6 @@ const Item = ({ item, forecast }) => {
         </div>
       </div>
 
-      {/* <Modal
-        active={active}
-        setActive={setActive}
-        firstForecast={item}
-        forecast={forecast}
-      /> */}
       <ModalContainer
         active={active}
         setActive={setActive}
