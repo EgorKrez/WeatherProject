@@ -13,12 +13,19 @@ const ModalContainer = ({ active, setActive, firstForecast, forecast }) => {
     setCurForecast(forecast);
   }, []);
 
+  const clearForecast = (e) => {
+    console.log("eeee");
+    console.log(e.stopPropagation());
+  };
+
   const modalClass = (weather, itemcClass) =>
     classNames(itemcClass, {
       sunny: weather === "Clear",
       cloud: weather === "Clouds",
       rain: weather === "Rain",
     });
+
+  console.log(firstForecast);
 
   return (
     <ModalWindow
@@ -28,6 +35,7 @@ const ModalContainer = ({ active, setActive, firstForecast, forecast }) => {
       forecast={forecast}
       curForecast={curForecast || firstForecast}
       showForecast={showForecast}
+      clearForecast={clearForecast}
       modalClass={modalClass}
     />
   );

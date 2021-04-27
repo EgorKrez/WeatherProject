@@ -7,6 +7,7 @@ const ModalWindow = ({
   forecast,
   curForecast,
   showForecast,
+  clearForecast,
   modalClass,
 }) => {
   return firstForecast ? (
@@ -16,7 +17,7 @@ const ModalWindow = ({
     >
       <div
         className={modalClass(curForecast?.weather, "modal-item")}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => clearForecast(e)}
       >
         <div className="item-time">{curForecast?.time}</div>
         <div className="item-city">{curForecast?.cityName}</div>
