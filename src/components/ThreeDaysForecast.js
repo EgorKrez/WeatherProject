@@ -1,7 +1,7 @@
 import React from "react";
 import Item from "./Item";
 
-const ThreeDaysForecast = ({ items }) => {
+const ThreeDaysForecast = ({ items, getItem }) => {
   let forecast = [];
 
   return (
@@ -14,7 +14,12 @@ const ThreeDaysForecast = ({ items }) => {
           const currentForecast = forecast;
           forecast = [];
           return (
-            <Item item={item} forecast={currentForecast} key={item.time} />
+            <Item
+              item={item}
+              forecast={currentForecast}
+              key={item.time}
+              getItem={getItem}
+            />
           );
         }
         return null;

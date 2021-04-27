@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/item.css";
 import classNames from "classnames";
-import ModalContainer from "../containers/ModalContainer";
 
-const Item = ({ item, forecast }) => {
-  const [active, setActive] = useState(false);
-
+const Item = ({ item, forecast, getItem }) => {
   const itemClass = classNames("item", {
     sunny: item.weather === "Clear",
     cloud: item.weather === "Clouds",
     rain: item.weather === "Rain",
   });
 
+  const openWindow = () => {
+    getItem(item, forecast);
+  };
+
   return (
     <div>
-      <div className={itemClass} onClick={() => setActive(true)}>
+      <div className={itemClass} onClick={() => openWindow()}>
         <div className="item-time">{item.time}</div>
         <div className="item-city">{item.cityName}</div>
         <div className="item-temp">{item.cityMain.temp}</div>
@@ -26,13 +27,6 @@ const Item = ({ item, forecast }) => {
           Speed: {item.cityWind.speed}; Deg: {item.cityWind.deg};
         </div>
       </div>
-
-      <ModalContainer
-        active={active}
-        setActive={setActive}
-        firstForecast={item}
-        forecast={forecast}
-      />
     </div>
   );
 };

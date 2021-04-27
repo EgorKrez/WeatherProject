@@ -9,31 +9,32 @@ const ModalWindow = ({
   showForecast,
   modalClass,
 }) => {
-  return (
+  return firstForecast ? (
     <div
       className={active ? "modal-window active" : "modal-window"}
       onClick={() => setActive(false)}
     >
       <div
-        className={modalClass(curForecast.weather, "modal-item")}
+        className={modalClass(curForecast?.weather, "modal-item")}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="item-time">{curForecast.time}</div>
-        <div className="item-city">{curForecast.cityName}</div>
-        <div className="item-temp">{curForecast.cityMain.temp}</div>
-        <div className="item-temp">{curForecast.weather}</div>
+        <div className="item-time">{curForecast?.time}</div>
+        <div className="item-city">{curForecast?.cityName}</div>
+        <div className="item-temp">{curForecast?.cityMain.temp}</div>
+        <div className="item-temp">{curForecast?.weather}</div>
         <div className="item-feel-like">
-          Feels like: {curForecast.cityMain.feels_like}
+          Feels like: {curForecast?.cityMain?.feels_like}
         </div>
         <div className="item-wind">
-          Speed: {curForecast.cityWind.speed}; Deg: {curForecast.cityWind.deg};
+          Speed: {curForecast?.cityWind?.speed}; Deg:{" "}
+          {curForecast?.cityWind?.deg};
         </div>
         {forecast && (
           <div className="modal-menu">
             {forecast.map((item) => (
               <div
-                key={item.time}
-                className={modalClass(item.weather, "modal-menu-item")}
+                key={item?.time}
+                className={modalClass(item?.weather, "modal-menu-item")}
                 onClick={() => showForecast(item)}
               >
                 {item.time}
@@ -49,6 +50,8 @@ const ModalWindow = ({
         )}
       </div>
     </div>
+  ) : (
+    <div></div>
   );
 };
 
