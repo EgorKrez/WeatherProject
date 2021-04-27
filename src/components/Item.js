@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 import "../styles/item.css";
 import classNames from "classnames";
+import ModalContainer from "../containers/ModalContainer";
 
 const Item = ({ item, forecast }) => {
   const [active, setActive] = useState(false);
@@ -27,17 +28,16 @@ const Item = ({ item, forecast }) => {
         </div>
       </div>
 
-      <Modal
+      {/* <Modal
         active={active}
         setActive={setActive}
-        time={item.time}
-        cityName={item.cityName}
-        temp={item.cityMain.temp}
-        weather={item.weather}
-        feelsLike={item.cityMain.feels_like}
-        speed={item.cityWind.speed}
-        deg={item.cityWind.deg}
-        currentItem={item}
+        firstForecast={item}
+        forecast={forecast}
+      /> */}
+      <ModalContainer
+        active={active}
+        setActive={setActive}
+        firstForecast={item}
         forecast={forecast}
       />
     </div>
