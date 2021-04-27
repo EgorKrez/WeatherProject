@@ -26,7 +26,7 @@ const ModalContainer = ({ active, setActive, firstForecast, forecast }) => {
       setActive={setActive}
       firstForecast={firstForecast}
       forecast={forecast}
-      curForecast={curForecast}
+      curForecast={curForecast || firstForecast}
       showForecast={showForecast}
       modalClass={modalClass}
     />

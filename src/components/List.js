@@ -12,8 +12,6 @@ const List = () => {
   const [modalData, setModalData] = useState(null);
 
   const getItem = (item, forecast) => {
-    console.log(item);
-    console.log(forecast);
     setActive(true);
     setModalData({ firstForecast: item, forecast: forecast });
   };
