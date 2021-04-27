@@ -13,11 +13,11 @@ const ModalWindow = ({
   return firstForecast ? (
     <div
       className={active ? "modal-window active" : "modal-window"}
-      onClick={() => setActive(false)}
+      onClick={() => clearForecast()}
     >
       <div
         className={modalClass(curForecast?.weather, "modal-item")}
-        onClick={(e) => clearForecast(e)}
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="item-time">{curForecast?.time}</div>
         <div className="item-city">{curForecast?.cityName}</div>

@@ -13,9 +13,9 @@ const ModalContainer = ({ active, setActive, firstForecast, forecast }) => {
     setCurForecast(forecast);
   }, []);
 
-  const clearForecast = (e) => {
-    console.log("eeee");
-    console.log(e.stopPropagation());
+  const clearForecast = () => {
+    setActive(false);
+    setCurForecast(null);
   };
 
   const modalClass = (weather, itemcClass) =>
