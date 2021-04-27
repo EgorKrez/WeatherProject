@@ -7,7 +7,7 @@ import {
 import { handleActions } from "redux-actions";
 
 export const initialState = {
-  forecasts: [{}],
+  forecasts: [],
 };
 
 export const forecastReducer = handleActions(
@@ -24,5 +24,5 @@ export const forecastReducer = handleActions(
       return clearAllForecastReducer();
     },
   },
-  {}
+  initialState
 );

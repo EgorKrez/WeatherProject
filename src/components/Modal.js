@@ -61,7 +61,7 @@ const Modal = ({
         <div className="item-wind">
           Speed: {curSpeed}; Deg: {curDeg};
         </div>
-        {forecast ? (
+        {forecast && (
           <div className="modal-menu">
             {forecast.map((item) => (
               <div
@@ -79,8 +79,6 @@ const Modal = ({
               {currentItem.time}
             </div>
           </div>
-        ) : (
-          void 0
         )}
       </div>
     </div>
