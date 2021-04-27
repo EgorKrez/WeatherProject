@@ -5,7 +5,7 @@ import "../styles/components.css";
 import "../styles/item.css";
 import "../styles/modal.css";
 
-const Modal = ({ active, setActive, firstForecast, forecast, showInfo }) => {
+const ModalWindow = ({ active, setActive, firstForecast, forecast }) => {
   const [curForecast, setCurForecast] = useState(firstForecast);
 
   const showForecast = useCallback((forecast) => {
@@ -33,9 +33,8 @@ const Modal = ({ active, setActive, firstForecast, forecast, showInfo }) => {
         <div className="item-temp">{curForecast.cityMain.temp}</div>
         <div className="item-temp">{curForecast.weather}</div>
         <div className="item-feel-like">
-          Feels like: {curForecast.cityMain.feelsLike}
+          Feels like: {curForecast.cityMain.feels_like}
         </div>
-        <div className="item-feel-like">{showInfo}</div>
         <div className="item-wind">
           Speed: {curForecast.cityWind.speed}; Deg: {curForecast.cityWind.deg};
         </div>
@@ -63,4 +62,4 @@ const Modal = ({ active, setActive, firstForecast, forecast, showInfo }) => {
   );
 };
 
-export default Modal;
+export default ModalWindow;
