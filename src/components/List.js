@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { forecastSelector } from "../redux/selectors";
-import "../styles/components.css";
 import isEmpty from "lodash/isEmpty";
 import EmptyList from "./EmptyLIst";
 import ThreeDaysForecast from "./ThreeDaysForecast";
