@@ -2,33 +2,32 @@ import React from "react";
 
 const ModalWindow = ({
   active,
-  setActive,
-  firstForecast,
+  startForecast,
   forecast,
-  curForecast,
+  activeForecast,
   showForecast,
-  clearForecast,
+  closeModal,
   modalClass,
 }) => {
-  return firstForecast ? (
+  return startForecast ? (
     <div
       className={active ? "modal-window active" : "modal-window"}
-      onClick={() => clearForecast()}
+      onClick={() => closeModal()}
     >
       <div
-        className={modalClass(curForecast?.weather, "modal-item")}
+        className={modalClass(activeForecast?.weather, "modal-item")}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="item-time">{curForecast?.time}</div>
-        <div className="item-city">{curForecast?.cityName}</div>
-        <div className="item-temp">{curForecast?.cityMain.temp}</div>
-        <div className="item-temp">{curForecast?.weather}</div>
+        <div className="item-time">{activeForecast?.time}</div>
+        <div className="item-city">{activeForecast?.cityName}</div>
+        <div className="item-temp">{activeForecast?.cityMain.temp}</div>
+        <div className="item-temp">{activeForecast?.weather}</div>
         <div className="item-feel-like">
-          Feels like: {curForecast?.cityMain?.feels_like}
+          Feels like: {activeForecast?.cityMain?.feels_like}
         </div>
         <div className="item-wind">
-          Speed: {curForecast?.cityWind?.speed}; Deg:{" "}
-          {curForecast?.cityWind?.deg};
+          Speed: {activeForecast?.cityWind?.speed}; Deg:{" "}
+          {activeForecast?.cityWind?.deg};
         </div>
         {forecast && (
           <div className="modal-menu">
@@ -42,10 +41,10 @@ const ModalWindow = ({
               </div>
             ))}
             <div
-              className={modalClass(firstForecast.weather, "modal-menu-item")}
-              onClick={() => showForecast(firstForecast)}
+              className={modalClass(startForecast.weather, "modal-menu-item")}
+              onClick={() => showForecast(startForecast)}
             >
-              {firstForecast.time}
+              {startForecast.time}
             </div>
           </div>
         )}

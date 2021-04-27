@@ -13,7 +13,7 @@ const List = () => {
 
   const getItem = (item, forecast) => {
     setActive(true);
-    setModalData({ firstForecast: item, forecast: forecast });
+    setModalData({ startForecast: item, forecast: forecast });
   };
 
   let items = useSelector(forecastSelector);
@@ -30,7 +30,7 @@ const List = () => {
       <ModalContainer
         active={active}
         setActive={setActive}
-        firstForecast={modalData?.firstForecast}
+        startForecast={modalData?.startForecast}
         forecast={modalData?.forecast}
       />
     </div>

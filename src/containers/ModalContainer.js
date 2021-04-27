@@ -6,16 +6,16 @@ import "../styles/components.css";
 import "../styles/item.css";
 import "../styles/modal.css";
 
-const ModalContainer = ({ active, setActive, firstForecast, forecast }) => {
-  const [curForecast, setCurForecast] = useState(firstForecast);
+const ModalContainer = ({ active, setActive, startForecast, forecast }) => {
+  const [activeForecast, setactiveForecast] = useState(startForecast);
 
   const showForecast = useCallback((forecast) => {
-    setCurForecast(forecast);
+    setactiveForecast(forecast);
   }, []);
 
-  const clearForecast = () => {
+  const closeModal = () => {
     setActive(false);
-    setCurForecast(null);
+    setactiveForecast(null);
   };
 
   const modalClass = (weather, itemcClass) =>
@@ -25,17 +25,14 @@ const ModalContainer = ({ active, setActive, firstForecast, forecast }) => {
       rain: weather === "Rain",
     });
 
-  console.log(firstForecast);
-
   return (
     <ModalWindow
       active={active}
-      setActive={setActive}
-      firstForecast={firstForecast}
+      startForecast={startForecast}
       forecast={forecast}
-      curForecast={curForecast || firstForecast}
+      activeForecast={activeForecast || startForecast}
       showForecast={showForecast}
-      clearForecast={clearForecast}
+      closeModal={closeModal}
       modalClass={modalClass}
     />
   );
