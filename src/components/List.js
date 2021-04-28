@@ -30,8 +30,10 @@ const List = () => {
       <ModalContainer
         active={active}
         setActive={setActive}
-        startForecast={modalData?.startForecast}
-        forecast={modalData?.forecast}
+        weather={{
+          startForecast: modalData?.startForecast,
+          forecast: modalData?.forecast,
+        }}
       />
     </div>
   );

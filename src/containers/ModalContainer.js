@@ -6,11 +6,11 @@ import "../styles/components.css";
 import "../styles/item.css";
 import "../styles/modal.css";
 
-const ModalContainer = ({ active, setActive, startForecast, forecast }) => {
-  const [activeForecast, setactiveForecast] = useState(startForecast);
+const ModalContainer = ({ active, setActive, weather }) => {
+  const [activeForecast, setactiveForecast] = useState(weather.startForecast);
 
-  const showForecast = useCallback((forecast) => {
-    setactiveForecast(forecast);
+  const showForecast = useCallback((item) => {
+    setactiveForecast(item);
   }, []);
 
   const closeModal = () => {
@@ -28,9 +28,11 @@ const ModalContainer = ({ active, setActive, startForecast, forecast }) => {
   return (
     <ModalWindow
       active={active}
-      startForecast={startForecast}
-      forecast={forecast}
-      activeForecast={activeForecast || startForecast}
+      weather={{
+        startForecast: weather.startForecast,
+        forecast: weather.forecast,
+        activeForecast: activeForecast || weather.startForecast,
+      }}
       showForecast={showForecast}
       closeModal={closeModal}
       modalClass={modalClass}

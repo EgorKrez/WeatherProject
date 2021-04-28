@@ -2,36 +2,34 @@ import React from "react";
 
 const ModalWindow = ({
   active,
-  startForecast,
-  forecast,
-  activeForecast,
+  weather,
   showForecast,
   closeModal,
   modalClass,
 }) => {
-  return startForecast ? (
+  return weather.startForecast ? (
     <div
       className={active ? "modal-window active" : "modal-window"}
       onClick={() => closeModal()}
     >
       <div
-        className={modalClass(activeForecast?.weather, "modal-item")}
+        className={modalClass(weather.activeForecast?.weather, "modal-item")}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="item-time">{activeForecast?.time}</div>
-        <div className="item-city">{activeForecast?.cityName}</div>
-        <div className="item-temp">{activeForecast?.cityMain.temp}</div>
-        <div className="item-temp">{activeForecast?.weather}</div>
+        <div className="item-time">{weather.activeForecast?.time}</div>
+        <div className="item-city">{weather.activeForecast?.cityName}</div>
+        <div className="item-temp">{weather.activeForecast?.cityMain.temp}</div>
+        <div className="item-temp">{weather.activeForecast?.weather}</div>
         <div className="item-feel-like">
-          Feels like: {activeForecast?.cityMain?.feels_like}
+          Feels like: {weather.activeForecast?.cityMain?.feels_like}
         </div>
         <div className="item-wind">
-          Speed: {activeForecast?.cityWind?.speed}; Deg:{" "}
-          {activeForecast?.cityWind?.deg};
+          Speed: {weather.activeForecast?.cityWind?.speed}; Deg:{" "}
+          {weather.activeForecast?.cityWind?.deg};
         </div>
-        {forecast && (
+        {weather.forecast && (
           <div className="modal-menu">
-            {forecast.map((item) => (
+            {weather.forecast.map((item) => (
               <div
                 key={item?.time}
                 className={modalClass(item?.weather, "modal-menu-item")}
@@ -41,10 +39,13 @@ const ModalWindow = ({
               </div>
             ))}
             <div
-              className={modalClass(startForecast.weather, "modal-menu-item")}
-              onClick={() => showForecast(startForecast)}
+              className={modalClass(
+                weather.startForecast.weather,
+                "modal-menu-item"
+              )}
+              onClick={() => showForecast(weather.startForecast)}
             >
-              {startForecast.time}
+              {weather.startForecast.time}
             </div>
           </div>
         )}
