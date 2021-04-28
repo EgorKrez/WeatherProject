@@ -1,11 +1,15 @@
 export const showWeatherForNowReducer = (payload) => {
-  return { forecasts: [payload] };
+  return { forecasts: [payload], loading: false };
 };
 
 export const showWeatherFor3DaysReducer = (payload) => {
-  return { forecasts: [payload] };
+  return { forecasts: [payload], loading: false };
 };
 
 export const clearAllForecastReducer = () => {
-  return { forecasts: [] };
+  return { forecasts: [], loading: false };
+};
+
+export const changeLoadingReducer = (state) => {
+  return { forecasts: state.forecasts, loading: true };
 };

@@ -10,6 +10,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   forecasts: forecastReducer,
+  loading: false,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

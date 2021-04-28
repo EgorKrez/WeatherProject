@@ -3,11 +3,13 @@ import {
   showWeatherForNowReducer,
   showWeatherFor3DaysReducer,
   clearAllForecastReducer,
+  changeLoadingReducer,
 } from "./reducers";
 import { handleActions } from "redux-actions";
 
 export const initialState = {
   forecasts: [],
+  loading: false,
 };
 
 export const forecastReducer = handleActions(
@@ -20,8 +22,12 @@ export const forecastReducer = handleActions(
       return showWeatherFor3DaysReducer(action.payload);
     },
 
-    [actions.clearAllForecastAction]: () => {
+    [actions.clearAllForecastAction]: (state = initialState) => {
       return clearAllForecastReducer();
+    },
+
+    [actions.changeLoadingAction]: (state = initialState) => {
+      return changeLoadingReducer(state);
     },
   },
   initialState

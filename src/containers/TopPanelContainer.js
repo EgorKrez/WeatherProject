@@ -4,6 +4,7 @@ import {
   showFor3DaysAction,
   showForNowAction,
   clearAllForecastAction,
+  changeLoadingAction,
 } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import TopPanel from "../components/TopPanel";
@@ -35,6 +36,7 @@ const TopPanelContainer = () => {
   };
 
   const fetchWeatherForNow = useCallback(() => {
+    dispatch(changeLoadingAction());
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=London,uk,DE&appid=6546d6953b78180b0268e32337fadb90`
@@ -46,6 +48,7 @@ const TopPanelContainer = () => {
   }, [dispatch]);
 
   const fetchWeatherFor3Days = useCallback(() => {
+    dispatch(changeLoadingAction());
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=6546d6953b78180b0268e32337fadb90`
