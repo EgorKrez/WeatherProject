@@ -1,24 +1,22 @@
 import React from "react";
 import Item from "./Item";
 
-const ThreeDaysForecast = ({ items, getItem }) => {
+const ThreeDaysForecast = ({ weather, getWeather }) => {
   let forecast = [];
 
   return (
     <div className="list">
-      {items[0].map((item, i) => {
+      {weather[0].map((item, i) => {
         if (i % 8 !== 7) {
           forecast.push(item);
-        }
-        if (i % 8 === 7) {
+        } else {
           const currentForecast = forecast;
           forecast = [];
           return (
             <Item
-              item={item}
-              forecast={currentForecast}
+              weather={{ activeForecast: item, forecast: currentForecast }}
               key={item.time}
-              getItem={getItem}
+              getWeather={getWeather}
             />
           );
         }

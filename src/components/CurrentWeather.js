@@ -1,11 +1,15 @@
 import React from "react";
 import Item from "./Item";
 
-const CurrentWeather = ({ items, getItem }) => {
+const CurrentWeather = ({ weather, getWeather }) => {
   return (
     <div className="list">
-      {items.map((item) => (
-        <Item item={item} forecast={null} getItem={getItem} key={item.time} />
+      {weather.map((item) => (
+        <Item
+          weather={{ activeForecast: item, forecast: null }}
+          getWeather={getWeather}
+          key={item.time}
+        />
       ))}
     </div>
   );

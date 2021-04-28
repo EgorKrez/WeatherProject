@@ -11,21 +11,21 @@ const List = () => {
   const [active, setActive] = useState(false);
   const [modalData, setModalData] = useState(null);
 
-  const getItem = (item, forecast) => {
+  const getWeather = (startForecast, forecast) => {
     setActive(true);
-    setModalData({ startForecast: item, forecast: forecast });
+    setModalData({ startForecast: startForecast, forecast: forecast });
   };
 
-  let items = useSelector(forecastSelector);
+  let weather = useSelector(forecastSelector);
 
   return (
     <div>
-      {isEmpty(items) ? (
+      {isEmpty(weather) ? (
         <EmptyList />
-      ) : items[0].length ? (
-        <ThreeDaysForecast items={items} getItem={getItem} />
+      ) : weather[0].length ? (
+        <ThreeDaysForecast weather={weather} getWeather={getWeather} />
       ) : (
-        <CurrentWeather items={items} getItem={getItem} />
+        <CurrentWeather weather={weather} getWeather={getWeather} />
       )}
       <ModalContainer
         active={active}
