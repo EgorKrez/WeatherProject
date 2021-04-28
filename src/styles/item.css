@@ -1,74 +1,74 @@
 .item {
-    height: 300px;
-    width: 500px;
-    background-color: lightgray;
-    margin-bottom: 50px;
-    border-radius: 5px;
+  height: 350px;
+  width: 650px;
+  background-color: lightgray;
+  margin-bottom: 50px;
+  border-radius: 5px;
+  padding-top: 30px;
+  text-shadow: 2px 2px 3px black, 0 0 4em black;
+  color: white;
+  transition: 0.4s;
 }
 
 .item:hover {
-    cursor: pointer;
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .item-time {
-    height: 10%;
-    width: 100%;
-    display: flex;
-    color: white;
-    justify-content: center;
-    align-items: center;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item-city {
-    height: 10%;
-    width: 100%;
-    display: flex;
-    color: white;
-    justify-content: center;
-    align-items: center;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item-temp {
-    height: 25%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 800;
-    font-size: 35px;
-    color: white;
+  height: 18%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  font-size: 35px;
 }
 
 .item-feel-like {
-    height: 5%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 100;
-    font-size: 10px;
-    color: white;
+  height: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 100;
+  font-size: 10px;
 }
 
 .item-wind {
-    height: 10%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 400;
-    font-size: 15px;
-    color: white;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  font-size: 15px;
 }
 
 .sunny {
-    background: url("https://www.daytondailynews.com/resizer/krvjKfNor4G3aRe9fLNdkxyxyug=/1066x600/cloudfront-us-east-1.images.arcpublishing.com/coxohio/PY47CDLPHFA5DAMO73J73LVC6I.jpg");
+  background: url("https://www.daytondailynews.com/resizer/krvjKfNor4G3aRe9fLNdkxyxyug=/1066x600/cloudfront-us-east-1.images.arcpublishing.com/coxohio/PY47CDLPHFA5DAMO73J73LVC6I.jpg");
 }
 
 .rain {
-    background: url("https://www.echo-news.co.uk/resources/images/10469131.jpg?display=1&htype=0&type=responsive-gallery" );
+  background: url("https://www.echo-news.co.uk/resources/images/10469131.jpg?display=1&htype=0&type=responsive-gallery");
 }
 
 .cloud {
-    background: url("https://cdn.shopify.com/s/files/1/1406/4308/articles/Looking-at-the-clouds-can-help-you-predict-bad-weather-_697_6052888_0_14103285_1000_1024x.jpg?v=1500990343");
+  background: url("https://cdn.shopify.com/s/files/1/1406/4308/articles/Looking-at-the-clouds-can-help-you-predict-bad-weather-_697_6052888_0_14103285_1000_1024x.jpg?v=1500990343");
 }

@@ -1,1 +1,2 @@
-export const postsSelector = (state) => state.posts.posts
+export const forecastSelector = (state) => state.forecasts.forecasts;
+export const loadingSelector = (state) => state.forecasts.loading;

@@ -1,28 +1,42 @@
-import React from "react";
-import Item from "./Item";
-import {useSelector} from "react-redux";
-import {postsSelector} from "../redux/selectors";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { forecastSelector } from "../redux/selectors";
+import isEmpty from "lodash/isEmpty";
+import EmptyList from "./EmptyLIst";
+import ThreeDaysForecast from "./ThreeDaysForecast";
+import CurrentWeather from "./CurrentWeather";
+import ModalContainer from "../containers/ModalContainer";
 
 const List = () => {
-    const items = useSelector(postsSelector)
+  const [active, setActive] = useState(false);
+  const [modalData, setModalData] = useState(null);
 
-        if (JSON.stringify(items[0]) === "{}") {
-            return (
-                <div className="no-forecast">PLEASE CHOOSE FORECAST</div>
-            );
-        }
-        if (items[0].length) {
-            return (
-                <div>
-                    {items[0].map((item) => <Item item={item} key={item.time}/>)}
-                </div>
-            );
-        }
-        return (
-            <div>
-                {items.map((item) => <Item item={item} key={item.time}/>)}
-            </div>
-        );
-    }
+  const getWeather = (startForecast, forecast) => {
+    setActive(true);
+    setModalData({ startForecast: startForecast, forecast: forecast });
+  };
 
-export default List
+  let weather = useSelector(forecastSelector);
+
+  return (
+    <div>
+      {isEmpty(weather) ? (
+        <EmptyList />
+      ) : weather[0].length ? (
+        <ThreeDaysForecast weather={weather} getWeather={getWeather} />
+      ) : (
+        <CurrentWeather weather={weather} getWeather={getWeather} />
+      )}
+      <ModalContainer
+        active={active}
+        setActive={setActive}
+        weather={{
+          startForecast: modalData?.startForecast,
+          forecast: modalData?.forecast,
+        }}
+      />
+    </div>
+  );
+};
+
+export default List;

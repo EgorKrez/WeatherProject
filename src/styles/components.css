@@ -1,0 +1,45 @@
+.title {
+  height: 50px;
+  width: 100%;
+  color: white;
+  font-size: 40px;
+  padding-top: 10px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  text-shadow: 2px 2px 3px black, 0 0 4em black;
+}
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.top-panel {
+  height: 50px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.no-forecast {
+  color: white;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.loading-container {
+  margin-bottom: 30px;
+}
