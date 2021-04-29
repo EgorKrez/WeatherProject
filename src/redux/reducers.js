@@ -2,7 +2,7 @@ export const showWeatherForNowReducer = (payload) => {
   return { forecasts: [payload], loading: false };
 };
 
-export const showWeatherFor3DaysReducer = (payload) => {
+export const showWeatherFor5DaysReducer = (payload) => {
   return { forecasts: [payload], loading: false };
 };
 

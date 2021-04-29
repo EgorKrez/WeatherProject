@@ -1,7 +1,7 @@
 import * as actions from "./actions";
 import {
   showWeatherForNowReducer,
-  showWeatherFor3DaysReducer,
+  showWeatherFor5DaysReducer,
   clearAllForecastReducer,
   changeLoadingReducer,
 } from "./reducers";
@@ -18,8 +18,8 @@ export const forecastReducer = handleActions(
       return showWeatherForNowReducer(action.payload);
     },
 
-    [actions.showFor3DaysAction]: (state = initialState, action) => {
-      return showWeatherFor3DaysReducer(action.payload);
+    [actions.showFor5DaysAction]: (state = initialState, action) => {
+      return showWeatherFor5DaysReducer(action.payload);
     },
 
     [actions.clearAllForecastAction]: (state = initialState) => {

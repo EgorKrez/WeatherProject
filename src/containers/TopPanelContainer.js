@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import axios from "axios";
 import {
-  showFor3DaysAction,
+  showFor5DaysAction,
   showForNowAction,
   clearAllForecastAction,
   changeLoadingAction,
@@ -19,18 +19,18 @@ const TopPanelContainer = () => {
       citySys: data.sys,
       cityMain: data.main,
       cityWind: data.wind,
-      time: new Date().toISOString().slice(0, 20),
+      time: new Date().toISOString().slice(5, 16).replace('T', ' '),
       weather: data.weather[0].main,
     };
   };
 
-  const getWeatherFor3DaysObject = (result) => {
+  const getWeatherFor5DaysObject = (result) => {
     return result.list.map((data) => ({
       cityName: result.city.name,
       citySys: data.sys,
       cityMain: data.main,
       cityWind: data.wind,
-      time: data.dt_txt,
+      time: data.dt_txt.toString().slice(5, 16),
       weather: data.weather[0].main,
     }));
   };
@@ -47,14 +47,14 @@ const TopPanelContainer = () => {
       });
   }, [dispatch]);
 
-  const fetchWeatherFor3Days = useCallback(() => {
+  const fetchWeatherFor5Days = useCallback(() => {
     dispatch(changeLoadingAction());
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=6546d6953b78180b0268e32337fadb90`
       )
       .then((result) => {
-        dispatch(showFor3DaysAction(getWeatherFor3DaysObject(result.data)));
+        dispatch(showFor5DaysAction(getWeatherFor5DaysObject(result.data)));
       });
   }, [dispatch]);
 
@@ -65,7 +65,7 @@ const TopPanelContainer = () => {
   return (
     <TopPanel
       fetchWeatherForNow={fetchWeatherForNow}
-      fetchWeatherFor3Days={fetchWeatherFor3Days}
+      fetchWeatherFor5Days={fetchWeatherFor5Days}
       clearAllWeather={clearAllWeather}
     />
   );

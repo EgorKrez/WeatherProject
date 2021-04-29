@@ -16,17 +16,17 @@ const ModalWindow = ({
         className={modalClass(weather.activeForecast?.weather, "modal-item")}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="item-time">{weather.activeForecast?.time}</div>
-        <div className="item-city">{weather.activeForecast?.cityName}</div>
-        <div className="item-temp">{weather.activeForecast?.cityMain.temp}</div>
-        <div className="item-temp">{weather.activeForecast?.weather}</div>
-        <div className="item-feel-like">
+        <p className="item-time">{weather.activeForecast?.time}</p>
+        <p className="item-city">{weather.activeForecast?.cityName}</p>
+        <p className="item-temp">{weather.activeForecast?.cityMain.temp}</p>
+        <p className="item-temp">{weather.activeForecast?.weather}</p>
+        <p className="item-feel-like">
           Feels like: {weather.activeForecast?.cityMain?.feels_like}
-        </div>
-        <div className="item-wind">
+        </p>
+        <p className="item-wind">
           Speed: {weather.activeForecast?.cityWind?.speed}; Deg:{" "}
           {weather.activeForecast?.cityWind?.deg};
-        </div>
+        </p>
         {weather.forecast && (
           <div className="modal-menu">
             {weather.forecast.map((item) => (

@@ -16,7 +16,6 @@
 }
 
 .item-time {
-  height: 10%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -24,7 +23,6 @@
 }
 
 .item-city {
-  height: 10%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -32,7 +30,6 @@
 }
 
 .item-temp {
-  height: 18%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -42,7 +39,6 @@
 }
 
 .item-feel-like {
-  height: 5%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -52,7 +48,6 @@
 }
 
 .item-wind {
-  height: 10%;
   width: 100%;
   display: flex;
   justify-content: center;

@@ -7,19 +7,19 @@ import "../styles/item.css";
 import "../styles/modal.css";
 
 const ModalContainer = ({ active, setActive, weather }) => {
-  const [activeForecast, setactiveForecast] = useState(weather.startForecast);
+  const [activeForecast, setActiveForecastFor5] = useState(weather.startForecast);
 
   const showForecast = useCallback((item) => {
-    setactiveForecast(item);
+    setActiveForecastFor5(item);
   }, []);
 
   const closeModal = () => {
     setActive(false);
-    setactiveForecast(null);
+    setActiveForecastFor5(null);
   };
 
-  const modalClass = (weather, itemcClass) =>
-    classNames(itemcClass, {
+  const modalClass = (weather, itemClass) =>
+    classNames(itemClass, {
       sunny: weather === "Clear",
       cloud: weather === "Clouds",
       rain: weather === "Rain",
