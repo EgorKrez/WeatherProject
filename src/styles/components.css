@@ -43,3 +43,10 @@
 .loading-container {
   margin-bottom: 30px;
 }
+
+.alert-wrapper {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 85%;
+  text-align: center;
+}

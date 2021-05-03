@@ -11,6 +11,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   forecasts: forecastReducer,
   loading: false,
+  isShowAlert: false,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

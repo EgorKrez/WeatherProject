@@ -5,10 +5,12 @@ import "./styles/components.css";
 import "./styles/components.css";
 import TopPanelContainer from "./containers/TopPanelContainer";
 import Loader from "./components/Loader";
+import Alert from "./components/Alert";
 
 function App() {
   return (
     <div>
+      <Alert />
       <Title />
       <div className="content">
         <TopPanelContainer />
