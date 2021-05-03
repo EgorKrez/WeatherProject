@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { forecastSelector } from "../redux/selectors";
 import isEmpty from "lodash/isEmpty";
 import EmptyList from "./EmptyLIst";
-import ThreeDaysForecast from "./ThreeDaysForecast";
+import FiveDaysForecast from "./FiveDaysForecast";
 import CurrentWeather from "./CurrentWeather";
 import ModalContainer from "../containers/ModalContainer";
 
@@ -23,7 +23,7 @@ const List = () => {
       {isEmpty(weather) ? (
         <EmptyList />
       ) : weather[0].length ? (
-        <ThreeDaysForecast weather={weather} getWeather={getWeather} />
+        <FiveDaysForecast weather={weather} getWeather={getWeather} />
       ) : (
         <CurrentWeather weather={weather} getWeather={getWeather} />
       )}

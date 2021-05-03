@@ -1,7 +1,7 @@
 import React from "react";
 import Item from "./Item";
 
-const ThreeDaysForecast = ({ weather, getWeather }) => {
+const FiveDaysForecast = ({ weather, getWeather }) => {
   let forecast = [];
 
   return (
@@ -27,4 +27,4 @@ const ThreeDaysForecast = ({ weather, getWeather }) => {
   );
 };
 
-export default ThreeDaysForecast;
+export default FiveDaysForecast;
