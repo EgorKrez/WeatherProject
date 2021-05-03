@@ -8,12 +8,31 @@ export const initialState = {
 
 export const forecastReducer = handleActions(
   {
-    [actions.showForNowAction]: (state = initialState, { payload }) => {
+    [actions.requestShowForNowAction]: (state = initialState) => {
+      return { forecasts: state.forecasts, loading: false };
+    },
+
+    [actions.successShowForNowAction]: (state = initialState, { payload }) => {
       return { forecasts: [payload], loading: false };
     },
 
-    [actions.showFor5DaysAction]: (state = initialState, { payload }) => {
+    [actions.failureShowForNowAction]: (state = initialState) => {
+      return { forecasts: [], loading: false };
+    },
+
+    [actions.requestShowFor5DaysAction]: (state = initialState) => {
+      return { forecasts: state.forecasts, loading: false };
+    },
+
+    [actions.successShowFor5DaysAction]: (
+      state = initialState,
+      { payload }
+    ) => {
       return { forecasts: [payload], loading: false };
+    },
+
+    [actions.failureShowFor5DaysAction]: (state = initialState) => {
+      return { forecasts: [], loading: false };
     },
 
     [actions.clearAllForecastAction]: (state = initialState) => {

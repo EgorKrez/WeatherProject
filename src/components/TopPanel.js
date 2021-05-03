@@ -1,5 +1,8 @@
 import React from "react";
-import { showFor5DaysAction, showForNowAction } from "../redux/actions";
+import {
+  requestShowFor5DaysAction,
+  requestShowForNowAction,
+} from "../redux/actions";
 
 const TopPanel = ({
   /*   fetchWeatherForNow,
@@ -11,13 +14,13 @@ const TopPanel = ({
     <div className="top-panel">
       <button
         className="btn btn-primary btn-lg"
-        onClick={() => dispatch(showForNowAction())}
+        onClick={() => dispatch(requestShowForNowAction())}
       >
         Now
       </button>
       <button
         className="btn btn-primary btn-lg"
-        onClick={() => dispatch(showFor5DaysAction())}
+        onClick={() => dispatch(requestShowFor5DaysAction())}
       >
         5 Days
       </button>
