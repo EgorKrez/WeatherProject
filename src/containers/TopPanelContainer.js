@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
-import axios from "axios";
+//import axios from "axios";
 import {
-  showFor5DaysAction,
-  showForNowAction,
+  //showFor5DaysAction,
+  //showForNowAction,
   clearAllForecastAction,
-  changeLoadingAction,
+  //changeLoadingAction,
 } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import TopPanel from "../components/TopPanel";
@@ -13,13 +13,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const TopPanelContainer = () => {
   const dispatch = useDispatch(null);
 
-  const getWeatherForNowObject = (data) => {
+  /* const getWeatherForNowObject = (data) => {
     return {
       cityName: data.name,
       citySys: data.sys,
       cityMain: data.main,
       cityWind: data.wind,
-      time: new Date().toISOString().slice(5, 16).replace('T', ' '),
+      time: new Date().toISOString().slice(5, 16).replace("T", " "),
       weather: data.weather[0].main,
     };
   };
@@ -56,7 +56,7 @@ const TopPanelContainer = () => {
       .then((result) => {
         dispatch(showFor5DaysAction(getWeatherFor5DaysObject(result.data)));
       });
-  }, [dispatch]);
+  }, [dispatch]); */
 
   const clearAllWeather = useCallback(() => {
     dispatch(clearAllForecastAction());
@@ -64,9 +64,10 @@ const TopPanelContainer = () => {
 
   return (
     <TopPanel
-      fetchWeatherForNow={fetchWeatherForNow}
-      fetchWeatherFor5Days={fetchWeatherFor5Days}
+      /* fetchWeatherForNow={fetchWeatherForNow}
+      fetchWeatherFor5Days={fetchWeatherFor5Days} */
       clearAllWeather={clearAllWeather}
+      dispatch={dispatch}
     />
   );
 };

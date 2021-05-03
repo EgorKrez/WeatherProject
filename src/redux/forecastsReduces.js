@@ -1,10 +1,4 @@
 import * as actions from "./actions";
-import {
-  showWeatherForNowReducer,
-  showWeatherFor5DaysReducer,
-  clearAllForecastReducer,
-  changeLoadingReducer,
-} from "./reducers";
 import { handleActions } from "redux-actions";
 
 export const initialState = {
@@ -14,20 +8,20 @@ export const initialState = {
 
 export const forecastReducer = handleActions(
   {
-    [actions.showForNowAction]: (state = initialState, action) => {
-      return showWeatherForNowReducer(action.payload);
+    [actions.showForNowAction]: (state = initialState, { payload }) => {
+      return { forecasts: [payload], loading: false };
     },
 
-    [actions.showFor5DaysAction]: (state = initialState, action) => {
-      return showWeatherFor5DaysReducer(action.payload);
+    [actions.showFor5DaysAction]: (state = initialState, { payload }) => {
+      return { forecasts: [payload], loading: false };
     },
 
     [actions.clearAllForecastAction]: (state = initialState) => {
-      return clearAllForecastReducer();
+      return { forecasts: [], loading: false };
     },
 
     [actions.changeLoadingAction]: (state = initialState) => {
-      return changeLoadingReducer(state);
+      return { forecasts: state.forecasts, loading: true };
     },
   },
   initialState
