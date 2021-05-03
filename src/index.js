@@ -10,7 +10,7 @@ import rootReducer from "./redux/rootReduces";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
-import { watchForNowForecast, watchForFiveDaysForecast } from "./redux/sagas";
+import { watchSaga } from "./redux/sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -21,8 +21,7 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
-sagaMiddleware.run(watchForNowForecast);
-sagaMiddleware.run(watchForFiveDaysForecast);
+sagaMiddleware.run(watchSaga);
 
 const persistor = persistStore(store);
 

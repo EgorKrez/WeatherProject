@@ -1,26 +1,21 @@
 import React from "react";
 import {
-  requestShowFor5DaysAction,
-  requestShowForNowAction,
+  showFor5DaysRequestAction,
+  showForNowRequestAction,
 } from "../redux/actions";
 
-const TopPanel = ({
-  /*   fetchWeatherForNow,
-  fetchWeatherFor5Days, */
-  clearAllWeather,
-  dispatch,
-}) => {
+const TopPanel = ({ clearAllWeather, dispatch }) => {
   return (
     <div className="top-panel">
       <button
         className="btn btn-primary btn-lg"
-        onClick={() => dispatch(requestShowForNowAction())}
+        onClick={() => dispatch(showForNowRequestAction())}
       >
         Now
       </button>
       <button
         className="btn btn-primary btn-lg"
-        onClick={() => dispatch(requestShowFor5DaysAction())}
+        onClick={() => dispatch(showFor5DaysRequestAction())}
       >
         5 Days
       </button>

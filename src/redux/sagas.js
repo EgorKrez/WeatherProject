@@ -1,33 +1,31 @@
-import { takeEvery, put, call } from "redux-saga/effects";
-import {
-  changeLoadingAction,
-  requestShowForNowAction,
-  successShowForNowAction,
-  failureShowForNowAction,
-  requestShowFor5DaysAction,
-  successShowFor5DaysAction,
-  failureShowFor5DaysAction,
-} from "../redux/actions";
+import { put, call, all, takeLeading } from "redux-saga/effects";
+import * as actions from "./actions";
 
-export function* watchForNowForecast() {
-  console.log(1488);
-  yield takeEvery("REQUEST_SHOW_FOR_NOW", sagaWorkerForNowForecast);
+export function* watchSaga() {
+  yield all([
+    takeLeading(
+      actions.showForNowRequestAction().type,
+      sagaWorkerForNowForecast
+    ),
+    takeLeading(
+      actions.showFor5DaysRequestAction().type,
+      sagaWorkerForFiveDaysForecast
+    ),
+  ]);
 }
 
 function* sagaWorkerForNowForecast() {
   try {
-    yield put(changeLoadingAction());
-    yield put(requestShowForNowAction());
     const data = yield call(fetchForecastForNow);
-    yield put(successShowForNowAction(data));
+    yield put(actions.showForNowSuccessAction(data));
   } catch (e) {
-    yield put(failureShowForNowAction());
+    yield put(actions.showForNowFailureAction());
   }
 }
 
 async function fetchForecastForNow() {
   const response = await fetch(
-    "https://api.openweathermap.org/data/2.5/weather?q=London,uk,DE&appid=6546d6953b78180b0268e32337fadb90"
+    "https://api.openweathermap.org/data/2.5/weather?q=London,uk,DE&appid=ba399a9e6afed074fb6983419e6bfbcc"
   ).then((res) => getWeatherForNowObject(res.data));
   return await response;
 }
@@ -43,24 +41,18 @@ const getWeatherForNowObject = (data) => {
   };
 };
 
-export function* watchForFiveDaysForecast() {
-  yield takeEvery("REQUEST_SHOW_FOR_5_DAYS", sagaWorkerForFiveDaysForecast);
-}
-
 function* sagaWorkerForFiveDaysForecast() {
   try {
-    yield put(changeLoadingAction());
-    yield put(requestShowFor5DaysAction());
     const data = yield call(fetchForecastForFiveDays);
-    yield put(successShowFor5DaysAction(data));
+    yield put(actions.showFor5DaysSuccessAction(data));
   } catch (e) {
-    yield put(failureShowFor5DaysAction());
+    yield put(actions.showFor5DaysFailureAction());
   }
 }
 
 async function fetchForecastForFiveDays() {
   const response = await fetch(
-    "https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=6546d6953b78180b0268e32337fadb90"
+    "https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=ba399a9e6afed074fb6983419e6bfbcc"
   ).then((res) => getWeatherFor5DaysObject(res.data));
   return await response;
 }
