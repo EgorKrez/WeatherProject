@@ -11,7 +11,7 @@ import TopPanel from "../components/TopPanel";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const TopPanelContainer = () => {
-  const dispatch = useDispatch(null);
+  const dispatch = useDispatch();
 
   /* const getWeatherForNowObject = (data) => {
     return {

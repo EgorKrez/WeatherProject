@@ -10,6 +10,7 @@ import {
 } from "../redux/actions";
 
 export function* watchForNowForecast() {
+  console.log(1488);
   yield takeEvery("REQUEST_SHOW_FOR_NOW", sagaWorkerForNowForecast);
 }
 
@@ -20,17 +21,15 @@ function* sagaWorkerForNowForecast() {
     const data = yield call(fetchForecastForNow);
     yield put(successShowForNowAction(data));
   } catch (e) {
-    alert(e);
     yield put(failureShowForNowAction());
   }
 }
 
 async function fetchForecastForNow() {
-  await fetch(
+  const response = await fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=London,uk,DE&appid=6546d6953b78180b0268e32337fadb90"
-  ).then((res) => {
-    return getWeatherForNowObject(res.data);
-  });
+  ).then((res) => getWeatherForNowObject(res.data));
+  return await response;
 }
 
 const getWeatherForNowObject = (data) => {
@@ -55,17 +54,15 @@ function* sagaWorkerForFiveDaysForecast() {
     const data = yield call(fetchForecastForFiveDays);
     yield put(successShowFor5DaysAction(data));
   } catch (e) {
-    alert(e);
     yield put(failureShowFor5DaysAction());
   }
 }
 
 async function fetchForecastForFiveDays() {
-  await fetch(
+  const response = await fetch(
     "https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=6546d6953b78180b0268e32337fadb90"
-  ).then((res) => {
-    return getWeatherFor5DaysObject(res.data);
-  });
+  ).then((res) => getWeatherFor5DaysObject(res.data));
+  return await response;
 }
 
 const getWeatherFor5DaysObject = (result) => {
