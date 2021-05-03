@@ -53,11 +53,17 @@ function* sagaWorkerForFiveDaysForecast() {
 async function fetchForecastForFiveDays() {
   const response = await fetch(
     "https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=ba399a9e6afed074fb6983419e6bfbcc"
-  ).then((res) => getWeatherFor5DaysObject(res.data));
-  return await response;
+  ); /* .then((res) => {
+    getWeatherFor5DaysObject(res.data);
+  }); */
+  /* console.log(JSON.parse(response.json()));
+  console.log(response.json());
+  console.log(getWeatherFor5DaysObject(response.json())); */
+  return await getWeatherFor5DaysObject(response.json());
 }
 
 const getWeatherFor5DaysObject = (result) => {
+  console.log(result);
   return result.list.map((data) => ({
     cityName: result.city.name,
     citySys: data.sys,
