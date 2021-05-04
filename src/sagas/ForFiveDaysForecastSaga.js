@@ -1,20 +1,11 @@
-import { put, call } from "redux-saga/effects";
-import * as actions from "../redux/actions";
+import axios from "axios";
 
-export function* sagaWorkerForFiveDaysForecast() {
-  try {
-    const data = yield call(fetchForecastForFiveDays);
-    yield put(actions.showFor5DaysSuccessAction(data));
-  } catch (e) {
-    yield put(actions.showFor5DaysFailureAction());
-  }
-}
-
-async function fetchForecastForFiveDays() {
-  const response = await fetch(
+export async function fetchForecastForFiveDays() {
+  const resp = await axios.get(
     "https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=ba399a9e6afed074fb6983419e6bfbcc"
   );
-  return getWeatherFor5DaysObject(await response.json());
+
+  return getWeatherFor5DaysObject(await resp.data);
 }
 
 const getWeatherFor5DaysObject = (result) => {
