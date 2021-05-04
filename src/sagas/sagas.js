@@ -1,5 +1,5 @@
 import { put, call, all, takeLeading } from "redux-saga/effects";
-import * as actions from "./actions";
+import * as actions from "../redux/actions";
 
 export function* watchSaga() {
   yield all([

@@ -10,7 +10,7 @@ import rootReducer from "./redux/rootReduces";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
-import { watchSaga } from "./redux/sagas";
+import { watchSaga } from "./sagas/sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
