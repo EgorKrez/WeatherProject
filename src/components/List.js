@@ -1,28 +1,59 @@
-import React from "react";
-import Item from "./Item";
-import {useSelector} from "react-redux";
-import {postsSelector} from "../redux/selectors";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { forecastSelector } from "../redux/selectors";
+import isEmpty from "lodash/isEmpty";
+import EmptyList from "./EmptyLIst";
+import FiveDaysForecast from "./FiveDaysForecast";
+import CurrentWeather from "./CurrentWeather";
+import ModalContainer from "../containers/ModalContainer";
 
 const List = () => {
-    const items = useSelector(postsSelector)
+  const [active, setActive] = useState(false);
+  const [modalData, setModalData] = useState(null);
 
-        if (JSON.stringify(items[0]) === "{}") {
-            return (
-                <div className="no-forecast">PLEASE CHOOSE FORECAST</div>
-            );
-        }
-        if (items[0].length) {
-            return (
-                <div>
-                    {items[0].map((item) => <Item item={item} key={item.time}/>)}
-                </div>
-            );
-        }
-        return (
-            <div>
-                {items.map((item) => <Item item={item} key={item.time}/>)}
-            </div>
-        );
+  const getWeather = (startForecast, forecast) => {
+    setActive(true);
+    setModalData({ startForecast: startForecast, forecast: forecast });
+  };
+
+  let weather = useSelector(forecastSelector);
+
+  const createModalData = (data) => {
+    if (data) {
+      let resultArray = [];
+      if (data?.length) {
+        data.map((item) => {
+          item.isActive = false;
+          resultArray.push(item);
+          return item;
+        });
+        return resultArray;
+      } else {
+        data.isActive = true;
+        return data;
+      }
     }
+  };
 
-export default List
+  return (
+    <div>
+      {isEmpty(weather) ? (
+        <EmptyList />
+      ) : weather[0].length ? (
+        <FiveDaysForecast weather={weather} getWeather={getWeather} />
+      ) : (
+        <CurrentWeather weather={weather} getWeather={getWeather} />
+      )}
+      <ModalContainer
+        active={active}
+        setActive={setActive}
+        weather={{
+          startForecast: createModalData(modalData?.startForecast),
+          forecast: createModalData(modalData?.forecast),
+        }}
+      />
+    </div>
+  );
+};
+
+export default List;

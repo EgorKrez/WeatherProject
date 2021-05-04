@@ -1,20 +1,22 @@
 import React from "react";
 import List from "./components/List";
-import Modal from "./components/Modal";
-import TopPanel from  "./components/TopPanel"
 import Title from "./components/Title";
-import "./styles/componentsStyles.css"
-import "./styles/componentsStyles.css"
+import "./styles/components.css";
+import "./styles/components.css";
+import TopPanelContainer from "./containers/TopPanelContainer";
+import Loader from "./components/Loader";
+import Alert from "./components/Alert";
 
 function App() {
   return (
     <div>
-        <Title />
-        <div className="content">
-        <TopPanel />
-      <List />
-        </div>
-      <Modal />
+      <Alert />
+      <Title />
+      <div className="content">
+        <TopPanelContainer />
+        <Loader />
+        <List />
+      </div>
     </div>
   );
 }

@@ -1,25 +1,35 @@
-import React, {useState} from "react";
-import Modal from "./Modal";
-import '../styles/item.css'
+import React from "react";
+import "../styles/item.css";
+import classNames from "classnames";
 
-const Item = ({ item }) => {
-    const [active, setActive] = useState(false)
+const Item = ({ weather, getWeather }) => {
+  const itemClass = classNames("item", {
+    sunny: weather.activeForecast.weather === "Clear",
+    cloud: weather.activeForecast.weather === "Clouds",
+    rain: weather.activeForecast.weather === "Rain",
+  });
 
-    return (
-        <div>
-        <div className={(item.weather === "Clear") ? "item sunny" : (item.weather === "Clouds") ? "item cloud" : (item.weather === "Rain") ? "item rain" : item} onClick={() => setActive(true)}>
-           <div className="item-time">{item.time}</div>
-            <div className="item-city">{item.cityName}</div>
-            <div className="item-temp">{item.cityMain.temp}</div>
-            <div className="item-temp">{item.weather}</div>
-            <div className="item-feel-like">Feels like: {item.cityMain.feels_like}</div>
-            <div className="item-wind">Speed: {item.cityWind.speed}; Deg: {item.cityWind.deg};</div>
-        </div>
+  const openWindow = () => {
+    getWeather(weather.activeForecast, weather.forecast);
+  };
 
-        <Modal active={active} setActive={setActive} time={item.time} cityName={item.cityName} temp={item.cityMain.temp} weather={item.weather} feelsLike={item.cityMain.feels_like} speed={item.cityWind.speed} deg={item.cityWind.deg}/>
+  return (
+    <div>
+      <div className={itemClass} onClick={() => openWindow()}>
+        <p className="item-time">{weather.activeForecast.time}</p>
+        <p className="item-city">{weather.activeForecast.cityName}</p>
+        <p className="item-temp">{weather.activeForecast.cityMain.temp}</p>
+        <p className="item-temp">{weather.activeForecast.weather}</p>
+        <p className="item-feel-like">
+          Feels like: {weather.activeForecast.cityMain.feels_like}
+        </p>
+        <p className="item-wind">
+          Speed: {weather.activeForecast.cityWind.speed}; Deg:{" "}
+          {weather.activeForecast.cityWind.deg};
+        </p>
+      </div>
+    </div>
+  );
+};
 
-        </div>
-    );
-}
-
-export default Item
+export default Item;

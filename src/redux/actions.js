@@ -1,6 +1,15 @@
 import { createAction } from "redux-actions";
-import { SHOW_FOR_NOW, SHOW_FOR_3_DAYS, CLEAR_ALL_FORECAST } from "./types";
 
-export const showForNowAction = createAction(SHOW_FOR_NOW);
-export const showFor3DaysAction = createAction(SHOW_FOR_3_DAYS);
-export const clearAllForecastAction = createAction(CLEAR_ALL_FORECAST);
+export const showForNowRequestAction = createAction("REQUEST_SHOW_FOR_NOW");
+export const showForNowSuccessAction = createAction("SUCCESS_SHOW_FOR_NOW");
+export const showForNowFailureAction = createAction("FAILURE_SHOW_FOR_NOW");
+export const clearAllForecastAction = createAction("CLEAR_ALL_FORECAST");
+export const showFor5DaysRequestAction = createAction(
+  "REQUEST_SHOW_FOR_5_DAYS"
+);
+export const showFor5DaysSuccessAction = createAction(
+  "SUCCESS_SHOW_FOR_5_DAYS"
+);
+export const showFor5DaysFailureAction = createAction(
+  "FAILURE_SHOW_FOR_5_DAYS"
+);
