@@ -15,6 +15,7 @@ function* sagaWorkerForNowForecast() {
 function* sagaWorkerForFiveDaysForecast() {
   try {
     const data = yield call(fetchForecastForFiveDays);
+    console.log(data);
     yield put(actions.showFor5DaysSuccessAction(data));
   } catch (e) {
     yield put(actions.showFor5DaysFailureAction());

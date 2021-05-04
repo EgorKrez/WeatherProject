@@ -1,11 +1,14 @@
 import axios from "axios";
 
 export async function fetchForecastForFiveDays() {
-  const resp = await axios.get(
-    "https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=ba399a9e6afed074fb6983419e6bfbcc"
-  );
-
-  return getWeatherFor5DaysObject(await resp.data);
+  await axios
+    .get(
+      "https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=ba399a9e6afed074fb6983419e6bfbcc"
+    )
+    .then((response) => getWeatherFor5DaysObject(response.data));
+  /* .interceptors.request.use(
+      async (requestInf) => await console.log(requestInf)
+    ); */
 }
 
 const getWeatherFor5DaysObject = (result) => {
@@ -18,3 +21,13 @@ const getWeatherFor5DaysObject = (result) => {
     weather: data.weather[0].main,
   }));
 };
+
+/*
+
+const resp = await axios.get(
+    "https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=ba399a9e6afed074fb6983419e6bfbcc"
+  );
+
+  return getWeatherFor5DaysObject(await resp.data);
+
+*/

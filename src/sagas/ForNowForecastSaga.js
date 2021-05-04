@@ -1,11 +1,14 @@
 import axios from "axios";
 
 export async function fetchForecastForNow() {
-  const resp = await axios.get(
-    "https://api.openweathermap.org/data/2.5/weather?q=London,uk,DE&appid=ba399a9e6afed074fb6983419e6bfbcc"
-  );
-
-  return getWeatherForNowObject(await resp.data);
+  await axios
+    .get(
+      "https://api.openweathermap.org/data/2.5/weather?q=London,uk,DE&appid=ba399a9e6afed074fb6983419e6bfbcc"
+    )
+    .then((response) => getWeatherForNowObject(response.data));
+  /* .interceptors.request.use(
+      async (requestInf) => await console.log(requestInf)
+    ); */
 }
 
 const getWeatherForNowObject = (data) => {
@@ -18,3 +21,14 @@ const getWeatherForNowObject = (data) => {
     weather: data.weather[0].main,
   };
 };
+/*\
+
+export async function fetchForecastForNow() {
+  const resp = await axios.get(
+    "https://api.openweathermap.org/data/2.5/weather?q=London,uk,DE&appid=ba399a9e6afed074fb6983419e6bfbcc"
+  );
+
+  return getWeatherForNowObject(await resp.data);
+}
+
+*/
