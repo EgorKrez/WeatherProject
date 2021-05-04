@@ -11,22 +11,33 @@ const ModalContainer = ({ active, setActive, weather }) => {
     weather.startForecast
   );
 
-  const showForecast = useCallback((item) => {
-    setActiveForecastFor5(item);
+  const showForecast = useCallback((nextForecast, pastForecast) => {
+    changeActiveStatus(nextForecast);
+    changeActiveStatus(pastForecast);
+    setActiveForecastFor5(nextForecast);
   }, []);
+
+  const changeActiveStatus = (item) => {
+    item.isActive = !item.isActive;
+  };
+
+  const getItemClass = (isActive, weather) =>
+    isActive
+      ? modalClass(weather, "modal-menu-item active-item")
+      : modalClass(weather, "modal-menu-item");
 
   const closeModal = useCallback(() => {
     setActive(false);
     setActiveForecastFor5(null);
   }, [setActive]);
 
-  const modalClass = (weather, itemClass) =>
-    classNames(itemClass, {
+  const modalClass = (weather, itemClass) => {
+    return classNames(itemClass, {
       sunny: weather === "Clear",
       cloud: weather === "Clouds",
       rain: weather === "Rain",
     });
-
+  };
   return (
     <ModalWindow
       active={active}
@@ -38,6 +49,7 @@ const ModalContainer = ({ active, setActive, weather }) => {
       showForecast={showForecast}
       closeModal={closeModal}
       modalClass={modalClass}
+      getItemClass={getItemClass}
     />
   );
 };

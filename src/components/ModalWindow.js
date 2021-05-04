@@ -6,6 +6,7 @@ const ModalWindow = ({
   showForecast,
   closeModal,
   modalClass,
+  getItemClass,
 }) => {
   return weather.startForecast ? (
     <div
@@ -32,18 +33,20 @@ const ModalWindow = ({
             {weather.forecast.map((item) => (
               <div
                 key={item?.time}
-                className={modalClass(item?.weather, "modal-menu-item")}
-                onClick={() => showForecast(item)}
+                className={getItemClass(item.isActive, item?.weather)}
+                onClick={() => showForecast(item, weather.activeForecast)}
               >
                 {item.time}
               </div>
             ))}
             <div
-              className={modalClass(
-                weather.startForecast.weather,
-                "modal-menu-item"
+              className={getItemClass(
+                weather.startForecast.isActive,
+                weather.startForecast.weather
               )}
-              onClick={() => showForecast(weather.startForecast)}
+              onClick={() =>
+                showForecast(weather.startForecast, weather.activeForecast)
+              }
             >
               {weather.startForecast.time}
             </div>

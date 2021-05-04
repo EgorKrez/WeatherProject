@@ -18,6 +18,23 @@ const List = () => {
 
   let weather = useSelector(forecastSelector);
 
+  const createModalData = (data) => {
+    if (data) {
+      let resultArray = [];
+      if (data?.length) {
+        data.map((item) => {
+          item.isActive = false;
+          resultArray.push(item);
+          return item;
+        });
+        return resultArray;
+      } else {
+        data.isActive = true;
+        return data;
+      }
+    }
+  };
+
   return (
     <div>
       {isEmpty(weather) ? (
@@ -31,8 +48,8 @@ const List = () => {
         active={active}
         setActive={setActive}
         weather={{
-          startForecast: modalData?.startForecast,
-          forecast: modalData?.forecast,
+          startForecast: createModalData(modalData?.startForecast),
+          forecast: createModalData(modalData?.forecast),
         }}
       />
     </div>
