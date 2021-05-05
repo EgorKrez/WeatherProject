@@ -1,7 +1,7 @@
 import { all, takeLeading, put, call } from "redux-saga/effects";
 import * as actions from "../redux/actions";
-import { fetchForecastForNow } from "./ForNowForecastSaga";
-import { fetchForecastForFiveDays } from "./ForFiveDaysForecastSaga";
+import { fetchForecastForNow } from "../apiCalls/forNowForecastFetch";
+import { fetchForecastForFiveDays } from "../apiCalls/forFiveDaysForecastFetch";
 
 function* sagaWorkerForNowForecast() {
   try {

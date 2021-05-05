@@ -15,20 +15,9 @@ const ListContainer = () => {
   let weather = useSelector(forecastSelector);
 
   const changeModalData = (data) => {
-    if (data) {
-      let resultArray = [];
-      if (data?.length) {
-        data.map((item) => {
-          item.isActive = false;
-          resultArray.push(item);
-          return item;
-        });
-        return resultArray;
-      } else {
-        data.isActive = true;
-        return data;
-      }
-    }
+    if (!data) return null;
+    if (data?.length) return data.map((item) => ({ ...item, isActive: false }));
+    return { ...data, isActive: true };
   };
 
   return (
