@@ -6,7 +6,7 @@ import TopPanelContainer from "./containers/TopPanelContainer";
 import Loader from "./shared/Loader";
 import Alert from "./shared/Alert";
 import ListContainer from "./containers/ListContainer";
-import WeatherDropDown from "./components/WeatherDropDown";
+import WeatherDropDownContainer from "./containers/WeatherDropDownContainer";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Alert />
       <Title />
       <div className="content">
-        <WeatherDropDown />
+        <WeatherDropDownContainer />
         <TopPanelContainer />
         <Loader />
         <ListContainer />
