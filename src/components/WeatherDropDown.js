@@ -1,32 +1,42 @@
 import React from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { changeCurrentCityAction } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  changeCurrentCityAction,
+  changeForecastTimeAction,
+} from "../redux/actions";
+import { citySelector, timeSelector } from "../redux/selectors";
+
 import "../styles/components.css";
 
 const WeatherDropDown = () => {
   const dispatch = useDispatch();
-  const cities = ["London", "Manchester", "Newcastle", "Newport"];
-  const days = ["For Now", "For 5 Days", "For 16 Days"];
+  const city = useSelector(citySelector);
+  const time = useSelector(timeSelector);
+  const cities = [
+    "London",
+    "Manchester",
+    "Birmingham",
+    "Newport",
+    "Bristol",
+    "Cambridge",
+  ];
+  const days = ["For Now", "For 5 Days"];
 
-  const createDropDownItems = (array, method) =>
-    array.map((item, i) => (
-      <Dropdown.Item key={i} onClick={() => dispatch(method(item))}>
+  const createDropDownItems = (dropDownItems, dropDownClick) =>
+    dropDownItems.map((item, i) => (
+      <Dropdown.Item key={i} onClick={() => dispatch(dropDownClick(item))}>
         {item}
       </Dropdown.Item>
     ));
 
   return (
     <div className="dropdown-wrapper">
-      <DropdownButton id="dropdown-basic-button" title="Select city" size="lg">
+      <DropdownButton id="dropdown-basic-button" title={city} size="lg">
         {createDropDownItems(cities, changeCurrentCityAction)}
       </DropdownButton>
-      <DropdownButton
-        id="dropdown-basic-button"
-        title="Select forecast"
-        size="lg"
-      >
-        {createDropDownItems(days, changeCurrentCityAction)}
+      <DropdownButton id="dropdown-basic-button" title={time} size="lg">
+        {createDropDownItems(days, changeForecastTimeAction)}
       </DropdownButton>
     </div>
   );

@@ -1,35 +1,17 @@
-import { all, takeLeading, put, call } from "redux-saga/effects";
+import { put, call, takeEvery } from "redux-saga/effects";
 import * as actions from "../redux/actions";
-import { fetchForecastForNow } from "../apiCalls/forNowForecastFetch";
-import { fetchForecastForFiveDays } from "../apiCalls/forFiveDaysForecastFetch";
+import { fetchWeather } from "../apiCalls/fetchWeather";
 
-function* sagaWorkerForNowForecast() {
+function* sagaWorker(action) {
+  console.log(action);
   try {
-    const data = yield call(fetchForecastForNow);
-    yield put(actions.showForNowSuccessAction(data));
+    const data = yield fetchWeather(action.payload);
+    yield put(actions.showWeatherSuccessAction(data));
   } catch (e) {
-    yield put(actions.showForNowFailureAction());
-  }
-}
-
-function* sagaWorkerForFiveDaysForecast() {
-  try {
-    const data = yield call(fetchForecastForFiveDays);
-    yield put(actions.showFor5DaysSuccessAction(data));
-  } catch (e) {
-    yield put(actions.showFor5DaysFailureAction());
+    yield put(actions.showWeatherFailureAction());
   }
 }
 
 export function* watchSaga() {
-  yield all([
-    takeLeading(
-      actions.showForNowRequestAction().type,
-      sagaWorkerForNowForecast
-    ),
-    takeLeading(
-      actions.showFor5DaysRequestAction().type,
-      sagaWorkerForFiveDaysForecast
-    ),
-  ]);
+  yield takeEvery(actions.showWeatherRequestAction().type, sagaWorker);
 }

@@ -2,9 +2,10 @@ import React from "react";
 import {
   showFor5DaysRequestAction,
   showForNowRequestAction,
+  showWeatherRequestAction,
 } from "../redux/actions";
 
-const TopPanel = ({ clearAllWeather, dispatch }) => {
+const TopPanel = ({ clearAllWeather, dispatch, city, time }) => {
   return (
     <div className="top-panel">
       <button
@@ -21,6 +22,12 @@ const TopPanel = ({ clearAllWeather, dispatch }) => {
       </button>
       <button className="btn btn-primary btn-lg" onClick={clearAllWeather}>
         Clear
+      </button>
+      <button
+        className="btn btn-danger btn-lg"
+        onClick={() => dispatch(showWeatherRequestAction([city, time]))}
+      >
+        SHOW
       </button>
     </div>
   );
