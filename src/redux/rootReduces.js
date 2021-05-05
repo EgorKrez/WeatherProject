@@ -12,6 +12,7 @@ const rootReducer = combineReducers({
   forecasts: forecastReducer,
   loading: false,
   isShowAlert: false,
+  currentCity: "London",
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

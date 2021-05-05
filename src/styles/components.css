@@ -24,6 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
@@ -49,4 +50,12 @@
   margin-top: 50px;
   width: 85%;
   text-align: center;
+}
+
+.dropdown-wrapper {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
 }

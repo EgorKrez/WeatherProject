@@ -1,5 +1,7 @@
 import { createAction } from "redux-actions";
 
+export const changeCurrentCityAction = createAction("CHANGE_CURRENT_CITY");
+export const changeForecastTimeAction = createAction("CHANGE_FORECAST_TIME");
 export const showForNowRequestAction = createAction("REQUEST_SHOW_FOR_NOW");
 export const showForNowSuccessAction = createAction("SUCCESS_SHOW_FOR_NOW");
 export const showForNowFailureAction = createAction("FAILURE_SHOW_FOR_NOW");

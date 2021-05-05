@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
 import ModalWindow from "../components/ModalWindow";
 import classNames from "classnames";
-
 import "../styles/components.css";
 import "../styles/item.css";
 import "../styles/modal.css";

@@ -1,5 +1,6 @@
 import axios from "../apiSetup/axiosSetup";
 import { getWeatherFor5DaysObject } from "../util/formatters/weatherFormatter";
+
 export function fetchForecastForFiveDays() {
   return axios
     .get(
