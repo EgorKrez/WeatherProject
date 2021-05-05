@@ -6,7 +6,7 @@ import {
   changeForecastTimeAction,
 } from "../redux/actions";
 import { citySelector, timeSelector } from "../redux/selectors";
-
+import { showWeatherRequestAction } from "../redux/actions";
 import "../styles/components.css";
 
 const WeatherDropDown = () => {
@@ -30,15 +30,17 @@ const WeatherDropDown = () => {
       </Dropdown.Item>
     ));
 
+  const onSubmit = (e) => dispatch(showWeatherRequestAction([city, time]));
+
   return (
-    <div className="dropdown-wrapper">
+    <form className="dropdown-wrapper" onSubmit={onSubmit}>
       <DropdownButton id="dropdown-basic-button" title={city} size="lg">
         {createDropDownItems(cities, changeCurrentCityAction)}
       </DropdownButton>
       <DropdownButton id="dropdown-basic-button" title={time} size="lg">
         {createDropDownItems(days, changeForecastTimeAction)}
       </DropdownButton>
-    </div>
+    </form>
   );
 };
 
