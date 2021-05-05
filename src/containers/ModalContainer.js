@@ -35,6 +35,8 @@ const ModalContainer = ({ active, setActive, weather }) => {
       sunny: weather === "Clear",
       cloud: weather === "Clouds",
       rain: weather === "Rain",
+      mist: weather === "Mist",
+      snow: weather === "Snow",
     });
   };
   return (

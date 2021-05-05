@@ -1,8 +1,6 @@
 import axios from "../apiSetup/axiosSetup";
 import { getWeatherForNowObject } from "../util/formatters/weatherFormatter";
 import { getWeatherFor5DaysObject } from "../util/formatters/weatherFormatter";
-import { fetchForecastForFiveDays } from "./forFiveDaysForecastFetch";
-import { fetchForecastForNow } from "./forNowForecastFetch";
 
 export function fetchWeather(payload) {
   if (payload[1] === "For Now") {

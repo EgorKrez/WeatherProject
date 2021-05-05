@@ -7,6 +7,8 @@ const Item = ({ weather, getWeather }) => {
     sunny: weather.activeForecast.weather === "Clear",
     cloud: weather.activeForecast.weather === "Clouds",
     rain: weather.activeForecast.weather === "Rain",
+    mist: weather.activeForecast.weather === "Mist",
+    snow: weather.activeForecast.weather === "Snow",
   });
 
   const openWindow = () => {
