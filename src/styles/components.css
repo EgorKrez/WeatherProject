@@ -61,6 +61,22 @@
 }
 
 input {
-  height: 35px;
-  width: 300px;
+  height: 45px;
+  width: 70%;
+}
+
+.input-panel {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-panel {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
