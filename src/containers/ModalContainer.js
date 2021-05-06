@@ -4,8 +4,11 @@ import classNames from "classnames";
 import "../styles/components.css";
 import "../styles/item.css";
 import "../styles/modal.css";
+import { useSelector } from "react-redux";
+import { unitSelector } from "../redux/selectors";
 
 const ModalContainer = ({ active, setActive, weather }) => {
+  const unit = useSelector(unitSelector);
   const [activeForecast, setActiveForecastFor5] = useState(
     weather.startForecast
   );
@@ -39,6 +42,12 @@ const ModalContainer = ({ active, setActive, weather }) => {
       snow: weather === "Snow",
     });
   };
+
+  const translateNumbers = (temp) => {
+    if (unit === "C") return Math.floor(temp - 273);
+    if (unit === "F") return Math.floor((temp - 273) * 1.8 + 32);
+  };
+
   return (
     <ModalWindow
       active={active}
@@ -51,6 +60,7 @@ const ModalContainer = ({ active, setActive, weather }) => {
       closeModal={closeModal}
       modalClass={modalClass}
       getItemClass={getItemClass}
+      translateNumbers={translateNumbers}
     />
   );
 };

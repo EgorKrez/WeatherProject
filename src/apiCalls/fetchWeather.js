@@ -16,3 +16,5 @@ export function fetchWeather(payload) {
     )
     .then((response) => getWeatherFor5DaysObject(response.data));
 }
+
+//      `https://api.openweathermap.org/data/2.5/forecast?lat=53.89&lon=27.56&appid=ba399a9e6afed074fb6983419e6bfbcc`

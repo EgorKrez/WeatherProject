@@ -3,3 +3,4 @@ export const loadingSelector = (state) => state.forecasts.loading;
 export const alertSelector = (state) => state.forecasts.isShowAlert;
 export const citySelector = (state) => state.forecasts.currentCity;
 export const timeSelector = (state) => state.forecasts.forecastTime;
+export const unitSelector = (state) => state.forecasts.unit;

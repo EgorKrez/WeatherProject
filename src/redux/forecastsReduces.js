@@ -7,6 +7,7 @@ export const initialState = {
   isShowAlert: false,
   currentCity: "London",
   forecastTime: "For Now",
+  unit: "C",
 };
 
 export const forecastReducer = handleActions(
@@ -18,6 +19,7 @@ export const forecastReducer = handleActions(
         isShowAlert: false,
         currentCity: state.currentCity,
         forecastTime: state.forecastTime,
+        unit: state.unit,
       };
     },
 
@@ -28,6 +30,18 @@ export const forecastReducer = handleActions(
         isShowAlert: false,
         currentCity: payload,
         forecastTime: state.forecastTime,
+        unit: state.unit,
+      };
+    },
+
+    [actions.changeUnit]: (state = initialState, { payload }) => {
+      return {
+        forecasts: state.forecasts,
+        loading: false,
+        isShowAlert: false,
+        currentCity: state.currentCity,
+        forecastTime: state.forecastTime,
+        unit: payload,
       };
     },
 
@@ -38,6 +52,7 @@ export const forecastReducer = handleActions(
         isShowAlert: false,
         currentCity: state.currentCity,
         forecastTime: payload,
+        unit: state.unit,
       };
     },
 
@@ -48,6 +63,7 @@ export const forecastReducer = handleActions(
         isShowAlert: false,
         currentCity: payload[0],
         forecastTime: payload[1],
+        unit: state.unit,
       };
     },
 
@@ -58,6 +74,7 @@ export const forecastReducer = handleActions(
         isShowAlert: false,
         currentCity: state.currentCity,
         forecastTime: state.forecastTime,
+        unit: state.unit,
       };
     },
 
@@ -68,6 +85,7 @@ export const forecastReducer = handleActions(
         isShowAlert: true,
         currentCity: state.currentCity,
         forecastTime: state.forecastTime,
+        unit: state.unit,
       };
     },
   },

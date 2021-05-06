@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
   isShowAlert: false,
   currentCity: "London",
   forecastTime: "For Now",
+  unit: "C",
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
