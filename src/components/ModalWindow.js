@@ -8,6 +8,7 @@ const ModalWindow = ({
   modalClass,
   getItemClass,
   translateNumbers,
+  unit,
 }) => {
   return weather.startForecast ? (
     <div
@@ -21,7 +22,7 @@ const ModalWindow = ({
         <p className="item-time">{weather.activeForecast?.time}</p>
         <p className="item-city">{weather.activeForecast?.cityName}</p>
         <p className="item-temp">
-          {translateNumbers(weather.activeForecast?.cityMain.temp)}°
+          {translateNumbers(weather.activeForecast?.cityMain.temp, unit)}
         </p>
         <p className="item-temp">{weather.activeForecast?.weather}</p>
         <p className="item-feel-like">

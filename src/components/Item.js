@@ -3,6 +3,7 @@ import "../styles/item.css";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
 import { unitSelector } from "../redux/selectors";
+import { translateNumbers } from "../util/formatters/unitFormatter";
 
 const Item = ({ weather, getWeather }) => {
   const unit = useSelector(unitSelector);
@@ -19,18 +20,13 @@ const Item = ({ weather, getWeather }) => {
     getWeather(weather.activeForecast, weather.forecast);
   };
 
-  const translateNumbers = (temp) => {
-    if (unit === "C") return Math.floor(temp - 273) + " °С";
-    if (unit === "F") return Math.floor((temp - 273) * 1.8 + 32) + " °F";
-  };
-
   return (
     <div>
       <div className={itemClass} onClick={() => openWindow()}>
         <p className="item-time">{weather.activeForecast.time}</p>
         <p className="item-city">{weather.activeForecast.cityName}</p>
         <p className="item-temp">
-          {translateNumbers(weather.activeForecast.cityMain.temp)}
+          {translateNumbers(weather.activeForecast.cityMain.temp, unit)}
         </p>
         <p className="item-temp">{weather.activeForecast.weather}</p>
         <p className="item-feel-like">

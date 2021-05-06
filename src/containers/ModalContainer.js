@@ -6,6 +6,7 @@ import "../styles/item.css";
 import "../styles/modal.css";
 import { useSelector } from "react-redux";
 import { unitSelector } from "../redux/selectors";
+import { translateNumbers } from "../util/formatters/unitFormatter";
 
 const ModalContainer = ({ active, setActive, weather }) => {
   const unit = useSelector(unitSelector);
@@ -43,11 +44,6 @@ const ModalContainer = ({ active, setActive, weather }) => {
     });
   };
 
-  const translateNumbers = (temp) => {
-    if (unit === "C") return Math.floor(temp - 273);
-    if (unit === "F") return Math.floor((temp - 273) * 1.8 + 32);
-  };
-
   return (
     <ModalWindow
       active={active}
@@ -61,6 +57,7 @@ const ModalContainer = ({ active, setActive, weather }) => {
       modalClass={modalClass}
       getItemClass={getItemClass}
       translateNumbers={translateNumbers}
+      unit={unit}
     />
   );
 };
