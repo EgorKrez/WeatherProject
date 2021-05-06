@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Dropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { citySelector, timeSelector, unitSelector } from "../redux/selectors";
@@ -8,6 +8,7 @@ import "../styles/components.css";
 
 const WeatherDropDownContainer = () => {
   const dispatch = useDispatch();
+  const inputRef = useRef(null);
   const city = useSelector(citySelector);
   const time = useSelector(timeSelector);
   const unit = useSelector(unitSelector);
@@ -34,6 +35,8 @@ const WeatherDropDownContainer = () => {
 
   return (
     <WeatherDropDown
+      dispatch={dispatch}
+      inputRef={inputRef}
       city={city}
       time={time}
       unit={unit}
