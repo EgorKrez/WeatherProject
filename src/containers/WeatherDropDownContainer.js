@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { citySelector, timeSelector, unitSelector } from "../redux/selectors";
 import { showWeatherRequestAction } from "../redux/actions";
 import WeatherDropDown from "../components/WeatherDropDown";
+import { changeCurrentCityAction } from "../redux/actions";
 import "../styles/components.css";
 
 const WeatherDropDownContainer = () => {
@@ -33,9 +34,15 @@ const WeatherDropDownContainer = () => {
 
   const onSubmit = (e) => dispatch(showWeatherRequestAction([city, time]));
 
+  const checkWeather = () => {
+    /* console.log(inputRef.current.value);
+    dispatch(changeCurrentCityAction(inputRef.current.value)); */
+    console.log(document.querySelector("input"));
+    dispatch(showWeatherRequestAction(["Brest", time]));
+  };
+
   return (
     <WeatherDropDown
-      dispatch={dispatch}
       inputRef={inputRef}
       city={city}
       time={time}
@@ -45,6 +52,7 @@ const WeatherDropDownContainer = () => {
       units={units}
       createDropDownItems={createDropDownItems}
       onSubmit={onSubmit}
+      checkWeather={checkWeather}
     />
   );
 };

@@ -8,7 +8,6 @@ import {
 import "../styles/components.css";
 
 const WeatherDropDown = ({
-  dispatch,
   inputRef,
   city,
   time,
@@ -18,6 +17,7 @@ const WeatherDropDown = ({
   units,
   createDropDownItems,
   onSubmit,
+  checkWeather,
 }) => {
   return (
     <form className="dropdown-wrapper" onSubmit={onSubmit}>
@@ -25,12 +25,7 @@ const WeatherDropDown = ({
         {createDropDownItems(cities, changeCurrentCityAction)}
       </DropdownButton>
       <input ref={inputRef} />
-      <button
-        className="btn btn-primary btn-lg"
-        onClick={() =>
-          dispatch(changeCurrentCityAction(inputRef.current.value))
-        }
-      >
+      <button className="btn btn-primary btn-lg" onClick={() => checkWeather()}>
         Check weather
       </button>
       <DropdownButton id="dropdown-basic-button" title={unit} size="sm">
