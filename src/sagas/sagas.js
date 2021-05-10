@@ -1,16 +1,7 @@
 import { put, all, takeLeading } from "redux-saga/effects";
 import * as actions from "../redux/actions";
-import { fetchWeather, fetchWeatherForFiveDaysFromCurrentLocation, fetchWeatherForFiveDaysFromSelectedLocation, fetchWeatherForNowFromCurrentLocation, fetchWeatherForNowFromSelectedLocation } from "../apiCalls/fetchWeather";
+import { fetchWeatherForFiveDaysFromCurrentLocation, fetchWeatherForFiveDaysFromSelectedLocation, fetchWeatherForNowFromCurrentLocation, fetchWeatherForNowFromSelectedLocation } from "../apiCalls/fetchWeather";
 
-/* function* sagaWorker(action) {
-  try {
-    const data = yield fetchWeather(action.payload);
-    yield put(actions.showWeatherSuccessAction(data));
-  } catch (e) {
-    yield put(actions.showWeatherFailureAction());
-  }
-}
- */
 function* sagaWorkerForNowFromCurrentLocation(action) {
   try {
     const data = yield fetchWeatherForNowFromCurrentLocation(action.payload);
@@ -54,5 +45,4 @@ export function* watchSaga() {
     takeLeading(actions.showWeatherFor5DaysFromCurrentLocationRequestAction().type, sagaWorkerFor5DaysFromCurrentLocation),
     takeLeading(actions.showWeatherFor5DaysFromSelectedLocationRequestAction().type, sagaWorkerFor5DaysFromSelectedLocation),
   ]) 
-  //yield takeEvery(actions.showWeatherRequestAction().type, sagaWorker);
 }

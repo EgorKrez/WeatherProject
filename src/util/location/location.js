@@ -1,17 +1,23 @@
-export const getCurrentLatitude = () => {
+export const getCurrentLatitude = async () => {
+  let promise = await new Promise((resolve, reject) => {
     let geolocation = require('geolocation')
-    geolocation.getCurrentPosition(async (err, position) => {
-      if (err) throw err
-      console.log(position.coords.latitude);
-      return await position.coords.latitude; 
+    geolocation.getCurrentPosition((err, position) => {
+      if (err) reject(err)
+      resolve(position.coords.latitude)
     })
+  })
+
+  return await promise
 }
 
-export const getCurrentLongitude = () => {
+export const getCurrentLongitude = async () => {
+  let promise = await new Promise((resolve, reject) => {
     let geolocation = require('geolocation')
-    geolocation.getCurrentPosition(async (err, position) => {
-      if (err) throw err
-      console.log(position.coords.longitude); 
-      return await position.coords.longitude; 
+    geolocation.getCurrentPosition((err, position) => {
+      if (err) reject(err)
+      resolve(position.coords.longitude) 
     })
+  })
+
+  return await promise
 } 

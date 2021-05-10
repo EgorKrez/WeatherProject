@@ -1,7 +1,6 @@
 import React from "react";
-import { showWeatherRequestAction } from "../redux/actions";
 
-const TopPanel = ({ dispatch, city, time, chooseAction }) => {
+const TopPanel = ({ chooseAction }) => {
   return (
     <div className="top-panel">
       <button
