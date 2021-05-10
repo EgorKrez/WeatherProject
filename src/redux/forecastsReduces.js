@@ -88,6 +88,17 @@ export const forecastReducer = handleActions(
         unit: state.unit,
       };
     },
+
+    [actions.showCurrentLocationWeather]: (state = initialState) => {
+      return {
+        forecasts: state.forecasts,
+        loading: false,
+        isShowAlert: true,
+        currentCity: state.currentCity,
+        forecastTime: state.forecastTime,
+        unit: state.unit,
+      };
+    },
   },
   initialState
 );

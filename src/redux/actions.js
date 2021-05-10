@@ -7,3 +7,4 @@ export const clearAllForecastAction = createAction("CLEAR_ALL_FORECAST");
 export const showWeatherRequestAction = createAction("REQUEST_SHOW_WEATHER");
 export const showWeatherSuccessAction = createAction("SUCCESS_SHOW_WEATHER");
 export const showWeatherFailureAction = createAction("FAILURE_SHOW_WEATHER");
+export const showCurrentLocationWeather = createAction("SHOW_CURRENT_LOCATION_WEATHER");
