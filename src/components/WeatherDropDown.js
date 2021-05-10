@@ -25,13 +25,10 @@ const WeatherDropDown = ({
           className="btn btn-primary btn-lg"
           onClick={() => checkWeather()}
         >
-          Check weather
+          Enter city
         </button>
       </div>
       <div className="dropdown-panel">
-        {/* <DropdownButton id="dropdown-basic-button" title={city} size="lg">
-          {createDropDownItems(cities, changeCurrentCityAction)}
-        </DropdownButton> */}
         <button
         className="btn btn-primary btn-lg"
         onClick={() => dispatch(changeCurrentCityAction('Current Location'))}

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Dropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { timeSelector, unitSelector } from "../redux/selectors";
-import { showWeatherRequestAction } from "../redux/actions";
+import { changeCurrentCityAction } from "../redux/actions";
 import WeatherDropDown from "../components/WeatherDropDown";
 import "../styles/components.css";
 
@@ -23,7 +23,7 @@ const WeatherDropDownContainer = () => {
 
   const checkWeather = () => {
     const value = document.querySelector("input").value;
-    dispatch(showWeatherRequestAction([value, time]));
+    dispatch(changeCurrentCityAction(value));
   };
 
   return (

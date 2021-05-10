@@ -7,6 +7,7 @@ function* sagaWorkerForNowFromCurrentLocation(action) {
     const data = yield fetchWeatherForNowFromCurrentLocation(action.payload);
     yield put(actions.showWeatherForNowFromCurrentLocationSuccessAction(data));
   } catch (e) {
+    console.log(e);
     yield put(actions.showWeatherForNowFromCurrentLocationFailureAction());
   }
 }
@@ -16,6 +17,7 @@ function* sagaWorkerForNowFromSelectedLocation(action) {
     const data = yield fetchWeatherForNowFromSelectedLocation(action.payload);
     yield put(actions.showWeatherForNowFromSelectedLocationSuccessAction(data));
   } catch (e) {
+    console.log(e);
     yield put(actions.showWeatherForNowFromSelectedLocationFailureAction());
   }
 }
@@ -25,6 +27,7 @@ function* sagaWorkerFor5DaysFromCurrentLocation(action) {
     const data = yield fetchWeatherForFiveDaysFromCurrentLocation(action.payload);
     yield put(actions.showWeatherFor5DaysFromCurrentLocationSuccessAction(data));
   } catch (e) {
+    console.log(e);
     yield put(actions.showWeatherFor5DaysFromCurrentLocationFailureAction());
   }
 }
@@ -34,6 +37,7 @@ function* sagaWorkerFor5DaysFromSelectedLocation(action) {
     const data = yield fetchWeatherForFiveDaysFromSelectedLocation(action.payload);
     yield put(actions.showWeatherFor5DaysFromSelectedLocationSuccessAction(data));
   } catch (e) {
+    console.log(e);
     yield put(actions.showWeatherFor5DaysFromSelectedLocationFailureAction());
   }
 }

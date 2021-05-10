@@ -56,39 +56,6 @@ export const forecastReducer = handleActions(
       };
     },
 
-    [actions.showWeatherRequestAction]: (state = initialState, { payload }) => {
-      return {
-        forecasts: state.forecasts,
-        loading: true,
-        isShowAlert: false,
-        currentCity: payload[0],
-        forecastTime: payload[1],
-        unit: state.unit,
-      };
-    },
-
-    [actions.showWeatherSuccessAction]: (state = initialState, { payload }) => {
-      return {
-        forecasts: [payload],
-        loading: false,
-        isShowAlert: false,
-        currentCity: state.currentCity,
-        forecastTime: state.forecastTime,
-        unit: state.unit,
-      };
-    },
-
-    [actions.showWeatherFailureAction]: (state = initialState) => {
-      return {
-        forecasts: [],
-        loading: false,
-        isShowAlert: true,
-        currentCity: state.currentCity,
-        forecastTime: state.forecastTime,
-        unit: state.unit,
-      };
-    },
-
     [actions.showWeatherForNowFromCurrentLocationRequestAction]: (state = initialState, { payload }) => {
       return {
         forecasts: state.forecasts,

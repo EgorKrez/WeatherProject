@@ -22,7 +22,7 @@ export async function fetchWeatherForFiveDaysFromCurrentLocation(payload) {
   .get(
     `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=ba399a9e6afed074fb6983419e6bfbcc`
   )
-  .then((response) => getWeatherForNowObject(response.data));
+  .then((response) => getWeatherFor5DaysObject(response.data));
 }
 
 export function fetchWeatherForNowFromSelectedLocation(payload) {
@@ -30,7 +30,7 @@ export function fetchWeatherForNowFromSelectedLocation(payload) {
   .get(
     `https://api.openweathermap.org/data/2.5/weather?q=${payload[0]}&appid=ba399a9e6afed074fb6983419e6bfbcc`
   )
-  .then((response) => getWeatherFor5DaysObject(response.data));
+  .then((response) => getWeatherForNowObject(response.data));
 }
 
 export function fetchWeatherForFiveDaysFromSelectedLocation(payload) {
